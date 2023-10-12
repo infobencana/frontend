@@ -1,12 +1,17 @@
-import { Toaster } from "@/components/ui/toaster";
 import { Outlet } from "react-router-dom";
-import { UserProvider } from "@/context/user-context";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/ui/footer";
 
 export default function AppLayout() {
   return (
-    <UserProvider>
-      <Toaster />
-      <Outlet />
-    </UserProvider>
+    <div className="w-full min-h-full h-auto flex flex-col gap">
+      <Header />
+      <main className="flex-1 w-full mt-28 mb-12 px-5">
+        <div className="w-full max-w-[1320px] 2xl:max-w-[1400px] mx-auto">
+          <Outlet />
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 }

@@ -15,8 +15,10 @@ export const useApi = (apiFunc) => {
       setData(result.data);
       response = result.data;
     } catch (error) {
-      setError(error.response.data.message || "Unexpected Error!");
-      response = error.response.data;
+      const message =
+        error?.response?.data?.message || "silahkan coba beberapa saat lagi";
+      setError(message);
+      response = { status: false, message };
     } finally {
       setLoading(false);
     }
