@@ -69,7 +69,7 @@ export default function AuthLayout() {
       </div>
       <div
         className={cn(
-          "items-center justify-start",
+          "items-center justify-start overflow-hidden",
           "hidden w-full min-w-[420px]",
           "lg:flex lg:h-full max-h-[1000px]",
           "lg:max-w-[760px] xl:max-w-full 2xl-max-w-[50%] 2xl:max-h-full",
@@ -78,8 +78,8 @@ export default function AuthLayout() {
         <img
           src={AuthImg}
           alt="disaster image"
-          className="w-full h-full lg:object-cover transition-all"
-          draggable="false"
+          className="w-full h-full lg:object-cover"
+          // draggable="false"
           loading="lazy"
         />
       </div>
