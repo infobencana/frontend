@@ -9,12 +9,7 @@ export function UserAvatar({
   ...props
 }) {
   return (
-    <Avatar
-      className={cn(
-        "w-11 h-11 ring-1 ring-snow ring-offset-2 ring-offset-white",
-        className,
-      )}
-    >
+    <Avatar className={cn("w-11 h-11 ", className)}>
       <AvatarImage {...props} />
       <AvatarFallback delayMs={0}>
         <Avvvatars value={fallback} size={fallBackSize} />

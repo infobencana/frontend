@@ -29,7 +29,7 @@ const Input = React.forwardRef(
             name={name}
             id={name}
             className={cn(
-              "flex h-12 w-full bg-white text-sm",
+              "flex h-12 w-full bg-white text-sm transition-all duration-200",
               "placeholder:text-gray disabled:cursor-not-allowed disabled:opacity-50",
               "rounded-[15px] border outline-0 ring-0",
               type === "password" ? "py-4 pl-4 pr-14" : "p-4",
