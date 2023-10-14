@@ -1,64 +1,44 @@
 import { useUser } from "@/context/user-context";
-
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Button } from "../ui/button";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverClose,
+} from "@/components/ui/popover";
 import { UserAvatar } from "./user-avatar";
-import { UserMenuList } from "./user-menu-list";
-import { logout } from "@/utils/auth";
+import { MenuList } from "./menu-list";
+import { ModalSignOut } from "../modal/modal-signout";
 
 export function UserMenu() {
   const { user } = useUser();
 
   return (
-    <Dialog>
-      <TooltipProvider>
-        <Tooltip delayDuration={200}>
-          <TooltipTrigger>
+    <ModalSignOut>
+      {({ openModal }) => (
+        <Popover>
+          <PopoverTrigger>
             <UserAvatar
               src={user.photo_profile}
               alt={user.full_name}
               fallback={user.email}
               className="ring-1 ring-snow ring-offset-2 ring-offset-white"
             />
-          </TooltipTrigger>
-          <TooltipContent
+          </PopoverTrigger>
+          <PopoverContent
             align="end"
-            sideOffset={10}
-            collisionPadding={50}
+            sideOffset={15}
             className="w-64 px-0 py-2 space-y-2"
           >
             <UserInfo user={user} />
-            <UserMenuList />
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-      <DialogContent className="w-72 sm:w-full sm:max-w-sm">
-        <DialogHeader>
-          <DialogTitle>Keluar</DialogTitle>
-          <DialogDescription>
-            Apakah anda yakin ingin keluar dan mengakhiri semua sesi ?
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <Button size="sm" className="rounded-md mt-4" onClick={logout}>
-            Keluar
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+            <PopoverClose className="w-full h-fit">
+              <div className="w-full h-fit">
+                <MenuList onSignOutMenuClick={openModal} />
+              </div>
+            </PopoverClose>
+          </PopoverContent>
+        </Popover>
+      )}
+    </ModalSignOut>
   );
 }
 

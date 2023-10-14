@@ -16,7 +16,7 @@ function UserProvider(props) {
         const response = await getCurrentUser();
         setUser(response.data.data);
       } catch (error) {
-        setError(error.response.data.message);
+        setError(error.response);
       }
     }
 
@@ -29,6 +29,15 @@ function UserProvider(props) {
 
   if (loading) {
     return <Loading />;
+  }
+
+  if (error && error.message) {
+    return (
+      <div>
+        <h1>Oppss error</h1>
+        <p>{error.message}</p>
+      </div>
+    );
   }
 
   return (

@@ -2,7 +2,7 @@ import { IconSearch } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "./input";
 
-export function Search() {
+export function Search({ onSearchSubmit }) {
   const navigate = useNavigate();
 
   const search = (e) => {
@@ -12,12 +12,13 @@ export function Search() {
     const { search } = Object.fromEntries(formData);
     const encodeURI = encodeURIComponent(search);
 
+    if (onSearchSubmit) onSearchSubmit();
     navigate(`/search?bencana=${encodeURI}`);
   };
 
   return (
     <form
-      className="w-72 min-w-[200px] max-w-[290px] relative h-fit"
+      className="min-w-[100px] w-full lg:max-w-[290px] relative h-fit"
       onSubmit={search}
     >
       <Input

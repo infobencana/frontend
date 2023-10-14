@@ -1,16 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { listMenu } from "@/constants/user-list-menu";
-import { DialogTrigger } from "../ui/dialog";
-import { Link } from "react-router-dom";
 import { cn } from "@/utils/cn";
 
-export function UserMenuList() {
+export function MenuList({ onSignOutMenuClick }) {
+  const navigate = useNavigate();
+
   const render = (list) => {
     if (list.name === "keluar") {
-      return (
-        <DialogTrigger key={list.id}>
-          <List list={list} />
-        </DialogTrigger>
-      );
+      return <List key={list.id} list={list} onClick={onSignOutMenuClick} />;
     }
 
     if (list.disabled) {
@@ -18,9 +15,7 @@ export function UserMenuList() {
     }
 
     return (
-      <Link to={list.url} key={list.id}>
-        <List list={list} />
-      </Link>
+      <List key={list.id} list={list} onClick={() => navigate(list.url)} />
     );
   };
 
@@ -31,7 +26,7 @@ export function UserMenuList() {
   );
 }
 
-export function List({ list }) {
+export function List({ list, ...props }) {
   return (
     <li
       className={cn(
@@ -40,6 +35,7 @@ export function List({ list }) {
           ? "cursor-not-allowed"
           : "cursor-pointer hover:bg-snow/30 ",
       )}
+      {...props}
     >
       <div className="w-fit h-fit">
         <list.icon
