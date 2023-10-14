@@ -2,14 +2,16 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLocation } from "react-router-dom";
 
-import authApi from "@/api/auth";
 import { FormField, FormItem, FormControl, FormMessage } from "./form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { Spinner } from "../ui/spinner";
 import { useApi } from "@/hooks/use-api";
 import { toast } from "@/hooks/use-toast";
 import { registerSchema, loginSchema } from "@/utils/schema";
 import { handleAuth } from "@/utils/auth";
+
+import authApi from "@/api/auth";
 
 export function AuthForm({ fields, submitText }) {
   const { pathname } = useLocation();
@@ -63,12 +65,12 @@ export function AuthForm({ fields, submitText }) {
             : false}
         </div>
         <Button
-          loading={loading}
           text={submitText}
           disabled={loading}
           size="lg"
           className="w-full mt-8"
         >
+          {loading ? <Spinner className="mr-2" /> : false}
           {submitText}
         </Button>
       </form>

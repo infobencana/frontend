@@ -14,15 +14,23 @@ client.interceptors.response.use(
     return response;
   },
   function (error) {
-    const { status, data } = error.response;
-    const isMatch = /authentication|failed|expired/i.test(
-      data?.message.toLowerCase(),
-    );
+    const response = error?.response;
 
-    if (status === 401 && isMatch) {
-      alert("Opps! Sesi anda telah habis");
-      Cookies.remove("token");
-      window.location.replace("/auth/login");
+    if (response) {
+      const { status, data } = error.response;
+      const isMatch = /authentication|failed|expired/i.test(
+        data?.message.toLowerCase(),
+      );
+
+      if (status === 401 && isMatch) {
+        alert("Opps! Sesi anda telah habis");
+        Cookies.remove("token");
+        window.location.replace("/auth/login");
+      }
+    } else {
+      error.response = {
+        message: error.message,
+      };
     }
 
     return Promise.reject(error);

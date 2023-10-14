@@ -1,8 +1,59 @@
+import { Link } from "react-router-dom";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { useUser } from "@/context/user-context";
+import { cn } from "@/utils/cn";
+import { UserMenu } from "../user/user-menu";
+import { UserMenuMobile } from "../user/user-menu-mobile";
+import { Button } from "../ui/button";
+import { Search } from "../ui/search";
+import Logo from "@/assets/images/infobencana.svg";
+
 export function Header() {
+  const matches = useMediaQuery("(min-width:1024px)");
+  const { user } = useUser();
+
   return (
-    <header className="flex items-center fixed top-0 w-full bg-white h-[80px] border-b border-b-snow px-5">
-      <div className="max-w-[1320px] 2xl:max-w-[1400px] mx-auto w-full">
-        <p>Ini Header</p>
+    <header className="fixed top-0 w-full h-[75px] lg:h-24 px-4 sm:px-5 bg-white border-b border-b-snow">
+      <div
+        className={cn(
+          "flex items-center",
+          "max-w-[1320px] 2xl:max-w-[1400px] w-full h-full mx-auto",
+        )}
+      >
+        <Link to="/" className="w-fit h-fit">
+          <img
+            src={Logo}
+            alt="infobencana logo"
+            className="w-[188px] sm:w-52"
+            draggable="false"
+          />
+        </Link>
+        <div className="ml-auto">
+          {matches ? (
+            <div className="flex items-center w-fit h-full space-x-8">
+              <Search />
+              {user && !user.error ? (
+                <UserMenu />
+              ) : (
+                <div className="flex w-fit h-full items-center justify-between space-x-3">
+                  <Button size="lg" className="rounded-3xl px-8" asChild>
+                    <Link to="/auth/login">Masuk</Link>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="rounded-3xl px-8"
+                    asChild
+                  >
+                    <Link to="/auth/register">Daftar</Link>
+                  </Button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <UserMenuMobile />
+          )}
+        </div>
       </div>
     </header>
   );
