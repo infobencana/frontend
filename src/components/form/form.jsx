@@ -64,6 +64,7 @@ FormControl.displayName = "FormControl";
 const FormMessage = React.forwardRef(
   ({ className, children, ...props }, ref) => {
     const { error, formMessageId } = useFormField();
+    console.log(error);
     const body = error ? String(error?.message) : children;
 
     if (!body) return null;
