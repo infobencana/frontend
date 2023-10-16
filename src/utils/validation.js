@@ -1,4 +1,4 @@
-import { object, string, date, number, array } from "yup";
+import { object, string, date, number, array, boolean } from "yup";
 
 export const fullname = string()
   .required("Nama lengkap tidak boleh kosong")
@@ -38,4 +38,17 @@ export const disaster = {
     .required("gambar tidak boleh kosong"),
   donations: array().default([]),
   people_gone: array().default([]),
+};
+
+export const missingPeople = {
+  name: string().required("Nama tidak boleh kosong"),
+  last_seen: string().required("Lokasi terakhir tidak boleh kosong"),
+  address: string().required("Lokasi terakhir tidak boleh kosong"),
+  age: number().required("Umur tidak boleh kosong").min(1),
+  weight: number().required("Berat tidak boleh kosong").min(1),
+  height: number().required("Tinggi tidak boleh kosong").min(1),
+  gender: string()
+    .required("Gender tidak boleh kosong")
+    .oneOf(["laki-laki", "perempuan"]),
+  status: boolean().required("status tidak boleh kosong").default(false),
 };
