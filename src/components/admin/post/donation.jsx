@@ -13,59 +13,41 @@ export function Donation() {
   const { toast } = useToast();
 
   const addDonation = async () => {
-    const platformName = await fieldValidation(
+    const platformName = fieldValidation(
       "platform_name",
       donations?.platform_name,
     );
-    const holderName = await fieldValidation(
-      "holder_name",
-      donations?.holder_name,
-    );
-    const source = await fieldValidation("source", donations?.source);
+    const holderName = fieldValidation("holder_name", donations?.holder_name);
+    const source = fieldValidation("source", donations?.source);
 
     if (platformName && holderName && source) {
       toast({
         title: "Info donasi berhasil di tambahkan",
       });
 
-      form.setValue("donations", [
+      const URLRegex = /(https?|ftp):\/\/[^\s\/$.?#].[^\s]*/i;
+
+      return form.setValue("donations", [
         {
           ...donations,
-          type: /(https?|ftp):\/\/[^\s\/$.?#].[^\s]*/i.test(donations?.source)
-            ? "D1"
-            : "D2",
+          type: URLRegex.test(donations?.source) ? "D1" : "D2",
         },
       ]);
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Gagal",
-        description: "Lengkapi form donasi dengan benar",
-      });
     }
+
+    toast({
+      variant: "destructive",
+      title: "Gagal menambahkan donasi",
+      description: "Lengkapi form donasi dengan benar",
+    });
   };
 
-  const fieldValidation = async (name, value) => {
-    const schema = yup
-      .string()
-      .required()
-      .matches(/^[A-Za-z0-9 ]+$/);
+  const fieldValidation = (name, value) => {
+    const regexString = /^[A-Za-z0-9 ]+$/;
+    const regexSource = /^(?:\d{10,15}|(https?|ftp):\/\/[^\s\/$.?#].[^\s]*)$/;
 
-    const sourceSchema = yup
-      .string()
-      .required()
-      .matches(/^(?:\d{10,15}|(https?|ftp):\/\/[^\s\/$.?#].[^\s]*)$/);
-
-    try {
-      if (name === "source") {
-        await sourceSchema.validate(value);
-      } else {
-        await schema.validate(value);
-      }
-      return true;
-    } catch (error) {
-      return false;
-    }
+    if (name === "source") return regexSource.test(value);
+    else return regexString.test(value);
   };
 
   const handleInputChange = (target) => {

@@ -14,6 +14,7 @@ import { TotalVictim } from "@/components/admin/post/total-victim";
 
 export default function AdminPost() {
   const form = useForm({ resolver: yupResolver(disasterFormSchema) });
+  console.log(form.getValues());
 
   return (
     <FormProvider {...form}>
