@@ -20,7 +20,7 @@ export function Coordinate() {
           placeholder="Longitude"
           name="longitude"
           pattern="\[[+-]?[0-9]*\.?[0-9]+,[+-]?[0-9]*\.?[0-9]+]"
-          {...register("longitue")}
+          {...register("longitude")}
         />
       </div>
     </div>

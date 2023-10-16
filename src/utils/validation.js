@@ -36,6 +36,6 @@ export const disaster = {
   picture: string()
     .url("format gambar harus berupa url")
     .required("gambar tidak boleh kosong"),
-  donation: array().default([]),
+  donations: array().default([]),
   people_gone: array().default([]),
 };

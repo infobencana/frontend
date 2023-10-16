@@ -19,6 +19,17 @@ export const initialContent = [
       backgroundColor: "default",
       textAlignment: "left",
     },
+    content: [],
+    children: [],
+  },
+  {
+    id: "85544146-cb2d-4ba1-8ebf-7457137c5114",
+    type: "paragraph",
+    props: {
+      textColor: "default",
+      backgroundColor: "default",
+      textAlignment: "left",
+    },
     content: [
       {
         type: "text",
@@ -30,17 +41,6 @@ export const initialContent = [
   },
   {
     id: "3dead0a3-a29a-4a20-ac21-b97376c388b5",
-    type: "paragraph",
-    props: {
-      textColor: "default",
-      backgroundColor: "default",
-      textAlignment: "left",
-    },
-    content: [],
-    children: [],
-  },
-  {
-    id: "d127d4c4-ada5-40cb-825a-b782e5fafd82",
     type: "paragraph",
     props: {
       textColor: "default",

@@ -11,6 +11,7 @@ export function TotalVictim() {
         type="number"
         placeholder="Total Korban Bencana"
         name="victim"
+        min="0"
         {...register("victim")}
       />
     </div>
