@@ -5,4 +5,7 @@ import Error from "./error";
 import Profile from "./profile";
 import Search from "./search";
 
-export { Home, Register, Login, Error, Profile, Search };
+import HomeAdmin from "./admin";
+import AdminPost from "./admin/post";
+
+export { Home, Register, Login, Error, Profile, Search, HomeAdmin, AdminPost };

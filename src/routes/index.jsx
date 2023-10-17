@@ -1,6 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "@/app";
-import { Home, Register, Login, Error, Profile, Search } from "@/pages";
+import {
+  Home,
+  Register,
+  Login,
+  Error,
+  Profile,
+  Search,
+  HomeAdmin,
+  AdminPost,
+} from "@/pages";
 import { PrivateRoute } from "./private-route";
 
 import AppLayout from "@/layouts/app-layout";
@@ -29,6 +38,20 @@ export const router = createBrowserRouter([
                 <Profile />
               </PrivateRoute>
             ),
+          },
+          {
+            path: "/r/admin",
+            element: <PrivateRoute role={["admin"]} redirect="/" />,
+            children: [
+              {
+                path: "dashboard",
+                element: <HomeAdmin />,
+              },
+              {
+                path: "create-post",
+                element: <AdminPost />,
+              },
+            ],
           },
         ],
       },
