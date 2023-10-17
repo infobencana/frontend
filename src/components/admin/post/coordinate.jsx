@@ -13,6 +13,7 @@ export function Coordinate() {
           placeholder="Latitude"
           name="latitude"
           min="-99"
+          max="99"
           pattern="\[[+-]?[0-9]*\.?[0-9]+,[+-]?[0-9]*\.?[0-9]+]"
           {...register("latitude")}
         />

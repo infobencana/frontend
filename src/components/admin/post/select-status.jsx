@@ -9,10 +9,11 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/utils/cn";
 
 export function SelectStatus() {
-  const { control } = useFormContext();
-
+  const { control, getFieldState } = useFormContext();
+  const { error } = getFieldState("detail.status");
   return (
     <div className="space-y-2">
       <Label className="text-sm text-black capitalize">Status Bencana</Label>
@@ -20,8 +21,10 @@ export function SelectStatus() {
         name="detail.status"
         control={control}
         render={({ field }) => (
-          <Select onValueChange={field.onChange}>
-            <SelectTrigger className="w-full">
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <SelectTrigger
+              className={cn("w-full", error ? "border border-[#ef4444]" : "")}
+            >
               <SelectValue placeholder="Pilih Status Bencana" />
             </SelectTrigger>
             <SelectContent>

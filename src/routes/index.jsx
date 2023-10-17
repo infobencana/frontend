@@ -9,6 +9,7 @@ import {
   Search,
   HomeAdmin,
   AdminPost,
+  Post,
 } from "@/pages";
 import { PrivateRoute } from "./private-route";
 
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
             element: <Search />,
           },
           {
+            path: "post/:id",
+            element: <Post />,
+          },
+          {
             path: "profile",
             element: (
               <PrivateRoute role={["user", "admin"]} redirect="/">
@@ -50,6 +55,10 @@ export const router = createBrowserRouter([
               {
                 path: "create-post",
                 element: <AdminPost />,
+              },
+              {
+                path: "post/:id/edit",
+                element: <AdminPost onEdit />,
               },
             ],
           },

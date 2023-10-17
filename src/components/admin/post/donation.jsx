@@ -1,13 +1,12 @@
 import { useState } from "react";
-import * as yup from "yup";
 import { useFormContext } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
-export function Donation() {
-  const [donations, setDonations] = useState({});
+export function Donation(initialValue = {}) {
+  const [donations, setDonations] = useState(initialValue);
 
   const form = useFormContext();
   const { toast } = useToast();

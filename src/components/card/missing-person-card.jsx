@@ -74,7 +74,7 @@ export function MissingPersonCard({
           <Button
             size="sm"
             variant="ghost"
-            className="font-medium"
+            className="font-medium bg-slate-200/40"
             onClick={() => deleteData(personData.id)}
           >
             Delete
