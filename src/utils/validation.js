@@ -17,9 +17,17 @@ export const password = string()
   );
 
 export const disaster = {
-  title: string().required("judul post bencana tidak boleh kosong"),
+  name: string().required("judul post bencana tidak boleh kosong"),
   detail: object().shape({
-    type: string().required("tipe bencana tidak boleh kosong"),
+    type: string()
+      .required("tipe bencana tidak boleh kosong")
+      .oneOf([
+        "gempa bumi",
+        "gunung meletus",
+        "tsunami",
+        "tanah longsor",
+        "banjir",
+      ]),
     status: string()
       .required("status bencana tidak boleh kosong")
       .oneOf(["aman", "darurat", "pemulihan", "waspada"]),

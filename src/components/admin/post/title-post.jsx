@@ -6,7 +6,7 @@ export function TitlePost() {
   return (
     <Controller
       control={form.control}
-      name="title"
+      name="name"
       render={({ field }) => (
         <TextArea
           {...field}

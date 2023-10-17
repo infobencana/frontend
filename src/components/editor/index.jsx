@@ -4,7 +4,6 @@ import {
   lightDefaultTheme,
 } from "@blocknote/react";
 import "@blocknote/core/style.css";
-import { initialContent } from "@/constants/editor-content";
 
 const theme = {
   ...lightDefaultTheme,
@@ -29,7 +28,6 @@ export default function Editor({ config, onChange }) {
 
   const editor = useBlockNote({
     onEditorContentChange: saveBlock,
-    initialContent: initialContent,
     ...config,
   });
 

@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { MissingPeopleScehma } from "@/utils/schema";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "../ui/switch";
+import { Button } from "../ui/button";
 import { cn } from "@/utils/cn";
 
-export function ModalPeopleGone({ trigger, children, initialValue, onSubmit }) {
+export function ModalPeopleGone({
+  children,
+  initialValue,
+  onSubmit,
+  confirmText,
+  actionOnClose,
+}) {
   const [open, setOpen] = useState(false);
   const form = useForm({
     defaultValues: initialValue || { gender: "laki-laki", status: false },
@@ -19,7 +26,7 @@ export function ModalPeopleGone({ trigger, children, initialValue, onSubmit }) {
   const openModal = () => setOpen(true);
 
   const closeModal = () => {
-    form.reset();
+    form.reset({ gender: "laki-laki", status: false });
     setTimeout(() => form.clearErrors(), 0);
     setOpen(false);
   };
@@ -30,9 +37,13 @@ export function ModalPeopleGone({ trigger, children, initialValue, onSubmit }) {
     form.reset();
   };
 
+  useEffect(() => {
+    if (!open) actionOnClose();
+  }, [open]);
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      {children({ openModal, closeModal, form })}
       <DialogContent
         onOpenAutoFocus={(e) => e.preventDefault()}
         onInteractOutside={(e) => e.preventDefault()}
@@ -130,8 +141,19 @@ export function ModalPeopleGone({ trigger, children, initialValue, onSubmit }) {
                 />
               </div>
               <div>
-                <div className="mt-5">
-                  {children({ open, openModal, closeModal })}
+                <div className="space-y-2.5 mt-5">
+                  <Button size="lg" className="w-full capitalize">
+                    {confirmText}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    className="bg-gray/10 w-full"
+                    onClick={() => closeModal()}
+                    asChild
+                  >
+                    <p className="cursor-pointer">Batal</p>
+                  </Button>
                 </div>
               </div>
             </div>
