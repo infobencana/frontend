@@ -4,8 +4,19 @@ import Login from "./auth/login";
 import Error from "./error";
 import Profile from "./profile";
 import Search from "./search";
+import Post from "./post";
 
 import HomeAdmin from "./admin";
 import AdminPost from "./admin/post";
 
-export { Home, Register, Login, Error, Profile, Search, HomeAdmin, AdminPost };
+export {
+  Home,
+  Register,
+  Login,
+  Error,
+  Profile,
+  Search,
+  HomeAdmin,
+  AdminPost,
+  Post,
+};

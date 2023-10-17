@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { MissingPersonCard } from "@/components/card/missing-person-card";
 import { uniqueId } from "@/utils/helpers";
 
-export function MissingPeople() {
+export function MissingPeople({ initialValue = [] }) {
   const [edit, setEdit] = useState(null);
-  const form = useFormContext();
+  const form = useFormContext({
+    initialValue: initialValue,
+  });
 
   const peoples_gone = form.watch("people_gone");
 

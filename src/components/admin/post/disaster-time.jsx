@@ -4,7 +4,8 @@ import { Label } from "@/components/ui/label";
 import dayjs from "dayjs";
 
 export function DisasterTime() {
-  const { control } = useFormContext();
+  const { control, getFieldState } = useFormContext();
+  const { error } = getFieldState("detail.date");
 
   return (
     <div className="space-y-2">
@@ -16,16 +17,15 @@ export function DisasterTime() {
         control={control}
         render={({ field }) => (
           <DateTimeField
-            defaultValue={dayjs()}
             format="LLL"
-            minDate={dayjs()}
+            minDateTime={dayjs()}
             sx={{
               "&": {
                 width: "100%",
                 "& .MuiInputBase-root": {
                   ":hover": {
                     fieldset: {
-                      border: "1px solid #1DB261",
+                      border: `1px solid ${error ? "#ef4444" : "#1DB261"}`,
                     },
                   },
                 },
@@ -35,12 +35,13 @@ export function DisasterTime() {
                   padding: "16px",
                 },
                 "& fieldset": {
-                  border: "1px solid #E2E8F0",
+                  border: `1px solid ${error ? "#ef4444" : "#E2E8F0"}`,
                   borderRadius: "15px",
                 },
               },
             }}
             {...field}
+            value={dayjs(field.value || new Date())}
             onChange={(time) => field.onChange(time.toISOString())}
           />
         )}
