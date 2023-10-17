@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
-export function Donation(initialValue = {}) {
+export function Donation({ initialValue = {} }) {
   const [donations, setDonations] = useState(initialValue);
 
   const form = useFormContext();
