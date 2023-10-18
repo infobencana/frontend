@@ -18,7 +18,6 @@ export function DisasterTime() {
         render={({ field }) => (
           <DateTimeField
             format="LLL"
-            minDateTime={dayjs()}
             sx={{
               "&": {
                 width: "100%",

@@ -89,7 +89,6 @@ export const columns = [
     id: "actions",
     enableHiding: false,
     cell: (props) => {
-      console.log(props);
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -101,14 +100,21 @@ export const columns = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>
-              <Link to={`/post/${props.row.original.id}`}>Lihat</Link>
+              <Link to={`/post/${props.row.original.id}`} className="w-full">
+                Lihat
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link to={`../post/${props.row.original.id}/edit`}>Edit</Link>
+              <Link
+                to={`../post/${props.row.original.id}/edit`}
+                className="w-full"
+              >
+                Edit
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <p
-                className="cursor-pointer"
+                className="cursor-pointer w-full"
                 onClick={() => props.openModal(props.row.original.id)}
               >
                 Hapus

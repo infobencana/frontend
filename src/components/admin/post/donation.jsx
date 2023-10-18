@@ -5,8 +5,14 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
-export function Donation({ initialValue = {} }) {
-  const [donations, setDonations] = useState(initialValue);
+export function Donation({ initialValue }) {
+  const defaultValue = {
+    platform_name: "",
+    source: "",
+    holder_name: "",
+  };
+
+  const [donations, setDonations] = useState(initialValue || defaultValue);
 
   const form = useFormContext();
   const { toast } = useToast();
@@ -25,11 +31,10 @@ export function Donation({ initialValue = {} }) {
       });
 
       const URLRegex = /(https?|ftp):\/\/[^\s\/$.?#].[^\s]*/i;
-
       return form.setValue("donations", [
         {
           ...donations,
-          type: URLRegex.test(donations?.source) ? "D1" : "D2",
+          type: URLRegex.test(donations?.source) ? 2 : 1,
         },
       ]);
     }
@@ -38,6 +43,15 @@ export function Donation({ initialValue = {} }) {
       variant: "destructive",
       title: "Gagal menambahkan donasi",
       description: "Lengkapi form donasi dengan benar",
+    });
+  };
+
+  const removeDonation = async () => {
+    form.setValue("donations", []);
+    setDonations(defaultValue);
+    toast({
+      title: "Berhasil",
+      description: "Donasi berhasil di hapus",
     });
   };
 
@@ -58,6 +72,7 @@ export function Donation({ initialValue = {} }) {
       <Label className="text-sm text-black capitalize">Info Donasi</Label>
       <div className="flex flex-col space-y-4">
         <Input
+          value={donations.platform_name}
           placeholder="Nama bank atau platform donasi"
           name="platform_name"
           onChange={(e) => {
@@ -65,6 +80,7 @@ export function Donation({ initialValue = {} }) {
           }}
         />
         <Input
+          value={donations.holder_name}
           placeholder="Nama pemilik donasi"
           name="holder_name"
           onChange={(e) => {
@@ -72,6 +88,7 @@ export function Donation({ initialValue = {} }) {
           }}
         />
         <Input
+          value={donations.source}
           placeholder="Nomor rekening atau link donasi"
           name="source"
           onChange={(e) => {
@@ -88,8 +105,22 @@ export function Donation({ initialValue = {} }) {
             className="w-full mt-3"
             onClick={addDonation}
           >
-            Simpan Donasi
+            {form.getValues("donations").length
+              ? "Perbarui Donasi"
+              : "Simpan Donasi"}
           </Button>
+          {form.getValues("donations").length ? (
+            <Button
+              size="lg"
+              variant="outline"
+              className="w-full mt-3"
+              onClick={removeDonation}
+            >
+              Hapus Donasi
+            </Button>
+          ) : (
+            false
+          )}
         </div>
       </div>
     </div>

@@ -12,18 +12,16 @@ export function Coordinate() {
           type="number"
           placeholder="Latitude"
           name="latitude"
-          min="-99"
-          max="99"
           pattern="\[[+-]?[0-9]*\.?[0-9]+,[+-]?[0-9]*\.?[0-9]+]"
+          step={0.00001}
           {...register("latitude")}
         />
         <Input
           type="number"
           placeholder="Longitude"
           name="longitude"
-          min="-99"
-          max="99"
           pattern="\[[+-]?[0-9]*\.?[0-9]+,[+-]?[0-9]*\.?[0-9]+]"
+          step={0.00001}
           {...register("longitude")}
         />
       </div>
