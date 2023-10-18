@@ -24,6 +24,7 @@ import { TitlePost } from "@/components/admin/post/title-post";
 import { TotalVictim } from "@/components/admin/post/total-victim";
 import { MissingPeople } from "@/components/admin/post/missing-people";
 import Editor from "@/components/editor";
+import { cn } from "@/utils/cn";
 
 export default function AdminPost({ onEdit }) {
   const [loading, setLoading] = useState(false);
@@ -35,6 +36,7 @@ export default function AdminPost({ onEdit }) {
     if (onEdit && id) {
       try {
         const data = await getDisasterById(id);
+        console.log(data);
         const { timestamp, _id, discuss, ...disasterData } = data;
         return disasterData;
       } catch (error) {
@@ -105,7 +107,9 @@ export default function AdminPost({ onEdit }) {
   if (error) {
     return (
       <div className="w-full h-[350px] flex items-center justify-center">
-        <p className="text-sm font-inter text-black">{error}</p>
+        <p className="text-sm font-inter text-black">
+          Data bencana tidak ditemukan
+        </p>
       </div>
     );
   }
@@ -118,10 +122,18 @@ export default function AdminPost({ onEdit }) {
           <p className="text-sm font-inter text-black">Sedang Memuat Data</p>
         </div>
       ) : (
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="space-y-32">
-            <div className="mt-5 grid grid-cols-[300px_1fr] auto-rows-auto gap-20">
-              <div className="space-y-6 border-r border-r-snow pr-10">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="animate-in duration-1000 fade-in"
+        >
+          <div className="space-y-20 lg:space-y-32">
+            <div className="mt-5 grid lg:grid-cols-[300px_1fr] auto-rows-auto gap-10 lg:gap-20">
+              <div
+                className={cn(
+                  "space-y-6 border-t border-t-snow border-r-snow pt-10 order-2",
+                  "lg:pt-0 lg:border-t-0 lg:border-r  lg:pr-10  lg:order-1",
+                )}
+              >
                 <DisasterType />
                 <DisasterLocation />
                 <Coordinate />
@@ -132,7 +144,7 @@ export default function AdminPost({ onEdit }) {
                   initialValue={onEdit ? form.getValues("donations") : {}}
                 />
               </div>
-              <div>
+              <div className="order lg:order-2">
                 <TitlePost />
                 <div className="mt-3">
                   <Controller

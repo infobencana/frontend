@@ -1,5 +1,5 @@
 import { IconAlertCircleFilled } from "@tabler/icons-react";
-import { Badge } from "../ui/badge";
+import { Badge } from "../badge/badge";
 import { Button } from "../ui/button";
 import { DialogTrigger } from "../ui/dialog";
 

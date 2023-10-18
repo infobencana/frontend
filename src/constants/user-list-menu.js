@@ -1,36 +1,52 @@
 import {
   IconUserFilled,
   IconClockFilled,
+  IconSquareRoundedPlusFilled,
   IconSettingsFilled,
-  IconGhost2Filled,
+  IconArrowBigRightFilled,
+  IconChartPieFilled,
 } from "@tabler/icons-react";
 
 export const listMenu = [
   {
     id: 1,
     name: "akun",
-    url: "/profile",
+    url: "profile",
     icon: IconUserFilled,
     disabled: false,
   },
   {
     id: 2,
+    name: "buat laporan",
+    url: "r/admin/create-post",
+    icon: IconSquareRoundedPlusFilled,
+    disabled: false,
+  },
+  {
+    id: 3,
+    name: "dashboard",
+    url: "r/admin/dashboard",
+    icon: IconChartPieFilled,
+    disabled: false,
+  },
+  {
+    id: 4,
     name: "history",
-    url: "/history",
+    url: "history",
     icon: IconClockFilled,
     disabled: true,
   },
   {
-    id: 3,
+    id: 5,
     name: "pengaturan",
-    url: "/settings",
+    url: "settings",
     icon: IconSettingsFilled,
     disabled: true,
   },
   {
-    id: 4,
+    id: 6,
     name: "keluar",
-    icon: IconGhost2Filled,
+    icon: IconArrowBigRightFilled,
     disabled: false,
   },
 ];
