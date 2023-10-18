@@ -1,11 +1,9 @@
-import { useUser } from "@/context/user-context";
+import DisasterTable from "@/components/admin/disaster-table";
 
 export default function HomeAdmin() {
-  const { user } = useUser();
-
   return (
-    <h1>
-      Welcome {user.full_name} | role {user.role}
-    </h1>
+    <div className="w-full grid grid-cols-[minmax(700px,920px)_1fr] auto-rows-auto gap-6">
+      <DisasterTable />
+    </div>
   );
 }

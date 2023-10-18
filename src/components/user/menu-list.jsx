@@ -1,11 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { listMenu } from "@/constants/user-list-menu";
 import { cn } from "@/utils/cn";
+import { useUser } from "@/context/user-context";
 
 export function MenuList({ onSignOutMenuClick }) {
+  const { user } = useUser();
   const navigate = useNavigate();
 
   const render = (list) => {
+    if (
+      user.role !== "admin" &&
+      ["buat laporan", "dashboard"].includes(list.name)
+    ) {
+      return;
+    }
     if (list.name === "keluar") {
       return <List key={list.id} list={list} onClick={onSignOutMenuClick} />;
     }

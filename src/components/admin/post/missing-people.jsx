@@ -5,11 +5,9 @@ import { Button } from "@/components/ui/button";
 import { MissingPersonCard } from "@/components/card/missing-person-card";
 import { uniqueId } from "@/utils/helpers";
 
-export function MissingPeople({ initialValue = [] }) {
+export function MissingPeople() {
   const [edit, setEdit] = useState(null);
-  const form = useFormContext({
-    initialValue: initialValue,
-  });
+  const form = useFormContext();
 
   const peoples_gone = form.watch("people_gone");
 
@@ -51,7 +49,7 @@ export function MissingPeople({ initialValue = [] }) {
       actionOnClose={() => setEdit(null)}
     >
       {({ openModal, form }) => (
-        <div className="w-full h-auto py-14 border-t border-t-snow font-inter">
+        <div className="w-full h-auto py-8 lg:py-14 border-t border-t-snow font-inter">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl uppercase font-bold text-black">

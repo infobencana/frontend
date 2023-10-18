@@ -13,7 +13,7 @@ export function TitlePost() {
         <TextArea
           {...field}
           className={cn(
-            "text-3xl font-bold outline-none placeholder:italic leading-[40px]",
+            "text-2xl lg:text-3xl font-bold outline-none placeholder:italic lg:leading-[40px]",
             error ? "bg-red-500/10" : "",
           )}
           placeholder="Judul Laporan"
