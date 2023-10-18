@@ -36,7 +36,6 @@ export default function AdminPost({ onEdit }) {
     if (onEdit && id) {
       try {
         const data = await getDisasterById(id);
-        console.log(data);
         const { timestamp, _id, discuss, ...disasterData } = data;
         return disasterData;
       } catch (error) {
@@ -46,6 +45,7 @@ export default function AdminPost({ onEdit }) {
 
     return {
       people_gone: [],
+      donations: [],
       picture: "",
     };
   };
@@ -73,9 +73,18 @@ export default function AdminPost({ onEdit }) {
     setLoading(true);
 
     try {
+      let formData = JSON.parse(JSON.stringify(data));
+      let donate = formData.donations.length;
+
+      formData.people_gone = formData.people_gone.map(({ id, ...people }) => ({
+        ...people,
+      }));
+
+      if (donate) delete formData.donations[0]._id;
+
       const response = onEdit
-        ? await updateDisaster(params?.id, data)
-        : await addDisasterPost(data);
+        ? await updateDisaster(params?.id, formData)
+        : await addDisasterPost(formData);
 
       toast({
         title: "Berhasil",
@@ -141,7 +150,7 @@ export default function AdminPost({ onEdit }) {
                 <TotalVictim />
                 <SelectStatus />
                 <Donation
-                  initialValue={onEdit ? form.getValues("donations") : {}}
+                  initialValue={onEdit ? form.getValues("donations")[0] : {}}
                 />
               </div>
               <div className="order lg:order-2">
@@ -184,7 +193,7 @@ export default function AdminPost({ onEdit }) {
               className="bg-gray/10 w-36"
               onClick={() => {
                 form.reset();
-                navigate("/r/admin", { replace: true });
+                navigate("/r/admin/dashboard", { replace: true });
               }}
             >
               Batal
