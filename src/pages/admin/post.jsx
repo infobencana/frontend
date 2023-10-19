@@ -76,9 +76,13 @@ export default function AdminPost({ onEdit }) {
       let formData = JSON.parse(JSON.stringify(data));
       let donate = formData.donations.length;
 
-      formData.people_gone = formData.people_gone.map(({ id, ...people }) => ({
-        ...people,
-      }));
+      formData.people_gone = formData.people_gone.map((people) => {
+        delete people.id;
+        delete people._id;
+        delete people.timestamp;
+
+        return people;
+      });
 
       if (donate) delete formData.donations[0]._id;
 

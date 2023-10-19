@@ -43,9 +43,9 @@ export const columns = [
           variant="ghost"
           asChild
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="text-left text-black font-semibold hover:bg-slate-100 cursor-pointer"
+          className="flex justify-center text-center text-black font-semibold hover:bg-slate-100 cursor-pointer"
         >
-          <div>
+          <div className="min-w-[250px]">
             Laporan Bencana
             <IconArrowsSort size={16} className="ml-2" />
           </div>
@@ -58,7 +58,9 @@ export const columns = [
     id: "lokasi",
     accessorKey: "place",
     header: () => (
-      <div className="text-left text-black font-semibold">Lokasi</div>
+      <div className="text-left text-black font-semibold min-w-[350px] lg:min-w-[200px]">
+        Lokasi
+      </div>
     ),
     cell: ({ row }) => <div className="capitalize">{row.original.place}</div>,
   },

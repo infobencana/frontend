@@ -49,7 +49,7 @@ export function ModalPeopleGone({
         onInteractOutside={(e) => e.preventDefault()}
         className={cn(
           "w-full h-[540px] max-w-[530px] max-h-screen",
-          "p-10 rounded-[14px] border border-snow overflow-y-auto",
+          "p-10 rounded-[14px] border border-snow overflow-y-auto custom-scroll",
         )}
       >
         <FormProvider {...form}>

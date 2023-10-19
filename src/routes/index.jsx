@@ -10,6 +10,7 @@ import {
   HomeAdmin,
   AdminPost,
   Post,
+  PeopleGoneRequest,
 } from "@/pages";
 import { PrivateRoute } from "./private-route";
 
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
               {
                 path: "post/:id/edit",
                 element: <AdminPost onEdit />,
+              },
+              {
+                path: "people-gone/req/:id",
+                element: <PeopleGoneRequest />,
               },
             ],
           },

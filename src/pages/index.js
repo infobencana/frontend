@@ -8,6 +8,7 @@ import Post from "./post";
 
 import HomeAdmin from "./admin";
 import AdminPost from "./admin/post";
+import PeopleGoneRequest from "./admin/people-gone-request";
 
 export {
   Home,
@@ -19,4 +20,5 @@ export {
   HomeAdmin,
   AdminPost,
   Post,
+  PeopleGoneRequest,
 };
