@@ -1,9 +1,13 @@
 import DisasterTable from "@/components/admin/disaster-table";
+import { ListRequestUser } from "@/components/admin/missing-people/list-request-user";
 
 export default function HomeAdmin() {
   return (
-    <div className="w-full grid grid-cols-[minmax(700px,920px)_1fr] auto-rows-auto gap-6">
+    <div className="w-full lg:grid lg:grid-cols-[minmax(500px,1fr)_350px] auto-rows-auto gap-10">
       <DisasterTable />
+      <div className="mt-5">
+        <ListRequestUser />
+      </div>
     </div>
   );
 }

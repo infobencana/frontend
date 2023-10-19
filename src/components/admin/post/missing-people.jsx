@@ -28,17 +28,23 @@ export function MissingPeople() {
   };
 
   const updateData = (data) => {
-    const peopleData = form
-      .getValues("people_gone")
-      .map((people) => (people.id === data.id ? data : people));
+    const peopleData = form.getValues("people_gone").map((people) => {
+      if (people.id) {
+        return people.id === data.id ? data : people;
+      }
+      if (people._id) {
+        return people._id === data._id ? data : people;
+      }
+    });
 
     form.setValue("people_gone", peopleData);
   };
 
   const deleteData = (id) => {
-    const people_gone = form
-      .getValues("people_gone")
-      .filter((people) => people.id !== id);
+    const people_gone = form.getValues("people_gone").filter((people) => {
+      if (people?.id) return people.id !== id;
+      if (people?._id) return people._id !== id;
+    });
     form.setValue("people_gone", people_gone);
   };
 

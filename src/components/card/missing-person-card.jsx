@@ -75,7 +75,7 @@ export function MissingPersonCard({
             size="sm"
             variant="ghost"
             className="font-medium bg-slate-200/40"
-            onClick={() => deleteData(personData.id)}
+            onClick={() => deleteData(personData.id || personData._id)}
           >
             Delete
           </Button>
