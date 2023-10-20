@@ -97,14 +97,14 @@ export function DataTable({ data, columns, refetch }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <div className="w-full">
-        <div className="flex items-center py-4">
+        <div className="flex items-center py-4 space-x-10">
           <Input
             placeholder="Filter Laporan Bencana..."
             value={table.getColumn("name")?.getFilterValue() ?? ""}
             onChange={(event) =>
               table.getColumn("name")?.setFilterValue(event.target.value)
             }
-            className="max-w-sm rounded-lg"
+            className="max-w-sm rounded-lg h-[40px] lg:h-[48px]"
           />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
