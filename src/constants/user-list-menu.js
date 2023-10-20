@@ -24,14 +24,14 @@ export const listMenu = [
   },
   {
     id: 3,
-    name: "dashboard",
+    name: "Dasbor Admin",
     url: "r/admin/dashboard",
     icon: IconChartPieFilled,
     disabled: false,
   },
   {
     id: 4,
-    name: "history",
+    name: "Riwayat",
     url: "history",
     icon: IconClockFilled,
     disabled: true,
