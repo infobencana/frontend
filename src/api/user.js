@@ -1,9 +1,27 @@
-import { client } from "./client";
+import {
+  client
+} from "./client";
 
 export function getCurrentUser() {
   return client.get("/profile");
 }
 
-export function updateProfile(data) {
-  return client.put("/profile", {...data});
+export async function updateProfile(data) {
+  try {
+    const response = await client.put("/profile", data);
+    return response.data.data;
+  } catch (error) {
+    throw error.response.data.message;
+  }
+}
+
+export async function updatePhoto(image) {
+  const formData = new FormData();
+  formData.append("photo_profile", image);
+  try {
+    const response = await client.post("/profile/upload_photo", formData);
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
 }
