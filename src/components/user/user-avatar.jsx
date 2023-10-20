@@ -9,7 +9,12 @@ export function UserAvatar({
   ...props
 }) {
   return (
-    <Avatar className={cn("w-11 h-11 ", className)}>
+    <Avatar
+      className={cn(
+        "w-11 h-11 transition-all duration-300 fade-in-50",
+        className,
+      )}
+    >
       <AvatarImage {...props} />
       <AvatarFallback delayMs={0}>
         <Avvvatars value={fallback} size={fallBackSize} />

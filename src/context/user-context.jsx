@@ -44,9 +44,10 @@ function UserProvider(props) {
     <UserContext.Provider
       value={{
         user,
-        updateUser: setUser,
         loading,
         error,
+        updateUser: setUser,
+        getUserData,
       }}
       {...props}
     />

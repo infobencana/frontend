@@ -60,3 +60,20 @@ export const missingPeople = {
     .oneOf(["laki-laki", "perempuan"]),
   status: boolean().required("status tidak boleh kosong").default(false),
 };
+
+export function validationImage(img) {
+  let error;
+
+  if (!img) {
+    error = "file image tidak ditemukan";
+  } else if (img.size > 3145728) {
+    error = "ukuran gambar maksimal 3MB";
+  } else if (!["image/jpeg", "image/png", "image/webp"].includes(img.type)) {
+    error = "Hanya support gambar JPG PNG WEBP";
+  }
+
+  return {
+    status: !error,
+    error,
+  };
+}
