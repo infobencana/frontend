@@ -4,9 +4,7 @@ import { IconX } from "@tabler/icons-react";
 import { cn } from "@/utils/cn";
 
 const Dialog = DialogPrimitive.Root;
-
 const DialogTrigger = DialogPrimitive.Trigger;
-
 const DialogPortal = DialogPrimitive.Portal;
 
 const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (

@@ -34,7 +34,7 @@ export default function PeopleGoneRequest() {
     last_seen: "lokasi terakhir",
   };
 
-  const handleUserRequest = async (status) => {
+  const handleUserRequest = async (status, action) => {
     const actionData = {
       req_missing_people_id: data.data._id,
       req_status: status,
@@ -44,15 +44,13 @@ export default function PeopleGoneRequest() {
       setLoadingReq(true);
       await actionReqMissingPeople(actionData);
       toast({
-        title: "Proses berhasil",
+        title: `Berhasil ${action} pembaruan data`,
       });
-      setTimeout(() => {
-        navigate("../dashboard", { replace: true });
-      }, 2000);
+      navigate("../dashboard", { replace: true });
     } catch (error) {
       toast({
         variant: "destructive",
-        title: "Proses Gagal",
+        title: `Gagal ${action} pembaruan data`,
         description: "silahkan coba lagi",
       });
     } finally {
@@ -166,7 +164,7 @@ export default function PeopleGoneRequest() {
                 disabled={loadingReq}
                 onClick={() => {
                   setCurrentButton("accept");
-                  handleUserRequest("accepted");
+                  handleUserRequest("accepted", "memperbarui");
                 }}
               >
                 {currentButton === "accept" ? (
@@ -182,7 +180,7 @@ export default function PeopleGoneRequest() {
                 disabled={loadingReq}
                 onClick={() => {
                   setCurrentButton("reject");
-                  handleUserRequest("rejected");
+                  handleUserRequest("rejected", "menolak");
                 }}
               >
                 {currentButton === "reject" ? (
