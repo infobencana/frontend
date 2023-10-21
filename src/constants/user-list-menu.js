@@ -24,7 +24,7 @@ export const listMenu = [
   },
   {
     id: 3,
-    name: "Dasbor Admin",
+    name: "dasbor admin",
     url: "r/admin/dashboard",
     icon: IconChartPieFilled,
     disabled: false,

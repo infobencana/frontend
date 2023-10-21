@@ -10,7 +10,7 @@ export function MenuList({ onSignOutMenuClick }) {
   const render = (list) => {
     if (
       user.role !== "admin" &&
-      ["buat laporan", "dashboard"].includes(list.name)
+      ["buat laporan", "dasbor admin"].includes(list.name)
     ) {
       return;
     }

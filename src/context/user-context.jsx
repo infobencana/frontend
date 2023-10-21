@@ -11,20 +11,20 @@ function UserProvider(props) {
   const [error, setError] = useState("");
 
   const getUserData = async () => {
-    try {
-      const response = await getCurrentUser();
-      setUser(response.data.data);
-    } catch (error) {
-      setError(error.response);
+    if (getToken()) {
+      try {
+        const response = await getCurrentUser();
+        setUser(response.data.data);
+      } catch (error) {
+        setError(error.response);
+      }
     }
 
     setTimeout(() => setLoading(false), 800);
   };
 
   useEffect(() => {
-    if (!user && getToken()) {
-      getUserData();
-    }
+    getUserData();
   }, []);
 
   if (loading) {

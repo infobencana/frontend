@@ -1,17 +1,29 @@
 import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { useUser } from "@/context/user-context";
 import { UserAvatar } from "./user-avatar";
-import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
-import { IconPhotoFilled, IconTrashFilled } from "@tabler/icons-react";
+import { cn } from "@/utils/cn";
+import {
+  IconPhotoFilled,
+  IconTrashFilled,
+  IconDots,
+} from "@tabler/icons-react";
 import { uploadPhotoProfile, updateProfile } from "@/api/user";
 import { validationImage } from "@/utils/validation";
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function UserProfilePhoto() {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const { user, getUserData } = useUser();
+  const matches = useMediaQuery("(max-width:1024px)");
   const uploadImgRef = useRef();
 
   const uploadingImage = async (img) => {
@@ -58,7 +70,7 @@ export function UserProfilePhoto() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center lg:block">
+    <div className="w-full flex flex-col items-center lg:block font-inter">
       <div className="relative w-[160px] h-[160px] lg:w-[240px] lg:h-[240px]">
         {loading ? (
           <div className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center bg-black/50 rounded-full z-50">
@@ -71,22 +83,10 @@ export function UserProfilePhoto() {
           src={user.photo_profile}
           alt={user.full_name}
           fallback={user.email}
-          fallBackSize={240}
+          fallBackSize={matches ? 160 : 240}
           draggable={false}
           className="w-[160px] h-[160px] lg:w-[240px] lg:h-[240px] rounded-full"
         />
-      </div>
-      <div className="flex flex-col space-y-3 mt-8 w-full">
-        <label htmlFor="upload-img">
-          <Button
-            disabled={loading}
-            className="w-full h-14 text-white font-semibold rounded-lg"
-            onClick={() => uploadImgRef.current.click()}
-          >
-            <IconPhotoFilled className="w-6 h-6 mr-3 text-white" />
-            Upload Foto
-          </Button>
-        </label>
         <input
           ref={uploadImgRef}
           id="upload-img"
@@ -95,19 +95,32 @@ export function UserProfilePhoto() {
           accept="image/png, image/gif, image/jpeg, image/webp"
           onChange={(e) => uploadingImage(e.target.files)}
         />
-        {user.photo_profile ? (
-          <Button
-            disabled={loading}
-            variant="outline"
-            className="w-full h-14 font-semibold rounded-lg"
-            onClick={deleteImage}
+        <DropdownMenu>
+          <DropdownMenuTrigger
+            className={cn(
+              "flex justify-center items-center bg-white border border-snow",
+              "rounded-full w-8 h-8  lg:w-9 lg:h-9 absolute bottom-0 right-4 lg:right-10 z-[999]",
+            )}
           >
-            <IconTrashFilled className="w-6 h-6 mr-3 text-green" />
-            Hapus Foto
-          </Button>
-        ) : (
-          false
-        )}
+            <IconDots className="w-5 h-5" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="font-inter" side="bottom">
+            <DropdownMenuItem
+              className="text-sm text-black cursor-pointer"
+              onClick={() => uploadImgRef.current.click()}
+              disabled={loading}
+            >
+              Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="text-sm text-black cursor-pointer"
+              onClick={deleteImage}
+              disabled={loading}
+            >
+              Hapus
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );

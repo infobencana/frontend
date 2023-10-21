@@ -19,5 +19,13 @@ export const password = {
   type: "password",
 };
 
+export const phone_number = {
+  label: "Nomor Telp",
+  name: "phone_number",
+  placeholder: "628XXXXXXXXXX",
+  type: "text",
+};
+
 export const registerFormFields = [fullname, email, password];
 export const loginFormFields = [email, password];
+export const profileFields = [email, fullname, phone_number];

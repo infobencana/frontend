@@ -7,7 +7,7 @@ export function getCurrentUser() {
 export async function updateProfile(data) {
   try {
     const response = await client.put("/profile", data);
-    return response.data.data;
+    return response;
   } catch (error) {
     throw error.response.data.message;
   }
