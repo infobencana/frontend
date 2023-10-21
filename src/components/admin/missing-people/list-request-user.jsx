@@ -29,7 +29,9 @@ export function ListRequestUser() {
       }
     >
       <div className="flex flex-col space-y-7 overflow-y-auto h-[500px] custom-scroll pr-1">
-        {loading || error || (!loading && !filterListRequest(data)) ? (
+        {loading ||
+        error ||
+        (!loading && !filterListRequest(data?.data)?.length) ? (
           <div className="w-full flex items-center justify-center h-full">
             {loading ? <Spinner className="mr-2 text-gray/50" /> : false}
             <p className="text-black text-sm">
@@ -41,7 +43,7 @@ export function ListRequestUser() {
             </p>
           </div>
         ) : (
-          filterListRequest(data.data).map((item) => (
+          filterListRequest(data?.data)?.map((item) => (
             <Link
               to={`../people-gone/req/${item._id}`}
               className="text-sm cursor-pointer"
