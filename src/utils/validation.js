@@ -16,6 +16,14 @@ export const password = string()
     "Password harus 6-12 karakter, minimal terdapat satu angka dan satu huruf kapital.",
   );
 
+export const phone_number = string()
+  .required("nomor handphone tidak boleh kosong")
+  .matches(/^62\d{10,12}$/, "Format nomor handphone tidak sesuai");
+
+export const gender = string()
+  .required("Gender tidak boleh kosong")
+  .oneOf(["laki-laki", "perempuan"]);
+
 export const disaster = {
   name: string().required("judul post bencana tidak boleh kosong"),
   detail: object().shape({
@@ -55,8 +63,21 @@ export const missingPeople = {
   age: number().required("Umur tidak boleh kosong").min(1),
   weight: number().required("Berat tidak boleh kosong").min(1),
   height: number().required("Tinggi tidak boleh kosong").min(1),
-  gender: string()
-    .required("Gender tidak boleh kosong")
-    .oneOf(["laki-laki", "perempuan"]),
+  gender,
   status: boolean().required("status tidak boleh kosong").default(false),
 };
+
+export function validationImage(img) {
+  let error;
+
+  if (img.size > 1048576) {
+    error = "ukuran gambar maksimal 1MB";
+  } else if (!["image/jpeg", "image/png", "image/webp"].includes(img.type)) {
+    error = "Hanya support gambar JPG PNG WEBP";
+  }
+
+  return {
+    status: !error,
+    error,
+  };
+}

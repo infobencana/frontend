@@ -7,7 +7,7 @@ export const useApi = (apiFunc) => {
 
   const request = async (...args) => {
     let response;
-
+    setError("");
     setLoading(true);
 
     try {

@@ -1,6 +1,11 @@
-import { useUser } from "@/context/user-context";
+import { UserProfilePhoto } from "@/components/user/user-profile-photo";
+import { ProfileForm } from "@/components/form/profile-form";
 
 export default function Profile() {
-  const { user } = useUser();
-  return <h1>Hello {user.full_name}</h1>;
+  return (
+    <div className="mt-6 lg:mt-14 lg:grid lg:grid-cols-[240px_minmax(400px,1fr)] lg:auto-rows-auto lg:gap-x-24">
+      <UserProfilePhoto />
+      <ProfileForm />
+    </div>
+  );
 }
