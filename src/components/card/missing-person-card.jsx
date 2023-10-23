@@ -26,7 +26,7 @@ export function MissingPersonCard({
             <h2 className="text-base font-semibold text-black leading-6">
               {personData.name}
             </h2>
-            <p className="capitalize text-xs text-gray font-medium mt-1">
+            <p className="capitalize text-xs text-gray font-medium mt-0.5">
               {personData.gender}
             </p>
           </div>
@@ -38,7 +38,7 @@ export function MissingPersonCard({
             ) : (
               <IconAlertCircleFilled
                 size={18}
-                className="text-[#BDBDC1] cursor-pointer hover:text-black transition-all duration-300"
+                className="mt-1 text-[#BDBDC1] cursor-pointer hover:text-black transition-all duration-300"
               />
             )}
           </div>

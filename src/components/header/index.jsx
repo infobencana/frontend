@@ -15,7 +15,7 @@ export function Header() {
   const isAdmin = user?.role === "admin";
 
   return (
-    <header className="fixed top-0 w-full h-[75px] lg:h-24 px-4 sm:px-5 bg-white border-b border-b-snow z-[9999]">
+    <header className="fixed top-0 w-full h-[75px] lg:h-[86px] px-4 sm:px-5 bg-white border-b border-b-snow z-[9999]">
       <div
         className={cn(
           "flex items-center",

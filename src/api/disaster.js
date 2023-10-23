@@ -24,7 +24,7 @@ export async function addDisasterPost(data) {
 export async function getDisasterById(id) {
   try {
     const response = await client.get(`/disaster/${id}`);
-    return response.data.data;
+    return response.data;
   } catch (error) {
     throw error.response.data.message;
   }

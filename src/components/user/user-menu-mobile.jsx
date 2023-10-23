@@ -6,7 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import { Search } from "../ui/search";
 import { UserInfo } from "./user-menu";
-import { MenuList } from "./menu-list";
+import { MenuList } from "./user-menu-list";
 import { ModalSignOut } from "../modal/modal-signout";
 import { DialogClose } from "@radix-ui/react-dialog";
 
