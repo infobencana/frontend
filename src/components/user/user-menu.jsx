@@ -6,7 +6,7 @@ import {
   PopoverClose,
 } from "@/components/ui/popover";
 import { UserAvatar } from "./user-avatar";
-import { MenuList } from "./menu-list";
+import { MenuList } from "./user-menu-list";
 import { ModalSignOut } from "../modal/modal-signout";
 
 export function UserMenu() {

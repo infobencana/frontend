@@ -5,11 +5,7 @@ import { useUser } from "@/context/user-context";
 import { UserAvatar } from "./user-avatar";
 import { Spinner } from "../ui/spinner";
 import { cn } from "@/utils/cn";
-import {
-  IconPhotoFilled,
-  IconTrashFilled,
-  IconDots,
-} from "@tabler/icons-react";
+import { IconDots } from "@tabler/icons-react";
 import { uploadPhotoProfile, updateProfile } from "@/api/user";
 import { validationImage } from "@/utils/validation";
 import {

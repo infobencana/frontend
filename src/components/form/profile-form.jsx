@@ -57,14 +57,14 @@ export function ProfileForm() {
   return (
     <div className="font-inter text-black w-full my-16 lg:mt-0 lg:max-w-[80%]">
       {!Object.values(requiredField).every((value) => value !== "") ? (
-        <div className="flex items-center space-x-2 py-2.5 lg:py-4 px-4 bg-red-300/10 border border-red-400 text-red-500 rounded-xl">
+        <div className="flex items-center space-x-2 py-2.5 lg:py-4 px-4 mb-6 bg-red-300/10 border border-red-400 text-red-500 rounded-xl">
           <IconAlertTriangle size={20} />
           <h2 className="text-sm font-semibold">Tolong lengkapi profil anda</h2>
         </div>
       ) : (
         false
       )}
-      <div className="mt-6">
+      <div>
         <h1 className="text-base lg:text-lg font-bold pb-2 border-b border-b-snow">
           Detail Akun
         </h1>

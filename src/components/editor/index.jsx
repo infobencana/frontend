@@ -23,7 +23,8 @@ export default function Editor({ config, onChange }) {
         value: JSON.stringify(editor.topLevelBlocks),
       },
     };
-    onChange(e);
+
+    if (onChange) onChange(e);
   };
 
   const editor = useBlockNote({

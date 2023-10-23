@@ -37,7 +37,7 @@ export default function AdminPost({ onEdit }) {
       try {
         const data = await getDisasterById(id);
         const { timestamp, _id, discuss, ...disasterData } = data;
-        return disasterData;
+        return disasterData.data;
       } catch (error) {
         setError(error);
       }
@@ -85,6 +85,8 @@ export default function AdminPost({ onEdit }) {
       });
 
       if (donate) delete formData.donations[0]._id;
+      if (formData._id) delete formData._id;
+      if (formData.user_detail) delete formData.user_detail;
 
       const response = onEdit
         ? await updateDisaster(params?.id, formData)
