@@ -5,9 +5,11 @@ export function UserFullname({ fullname, verified, time }) {
   return (
     <div className="w-full h-auto flex items-start font-inter space-x-1">
       <div className="max-w-3xl overflow-hidden">
-        <h2 className="text-base font-semibold text-black">{fullname}</h2>
+        <h2 className="text-sm xl:text-base font-semibold text-black">
+          {fullname}
+        </h2>
       </div>
-      <div className="flex items-center flex-shrink-0 mt-0.5">
+      <div className="flex items-center flex-shrink-0 xl:mt-0.5">
         {verified ? (
           <IconDiscountCheckFilled className="w-4 h-4 mt-0.5 text-[#008DE9]" />
         ) : (

@@ -6,6 +6,7 @@ import { DialogTrigger } from "../ui/dialog";
 export function MissingPersonCard({
   personData,
   requestChanging = false,
+  requestClick,
   editable = false,
   editData,
   deleteData,
@@ -37,6 +38,7 @@ export function MissingPersonCard({
               </Badge>
             ) : (
               <IconAlertCircleFilled
+                onClick={() => requestClick(personData)}
                 size={18}
                 className="mt-1 text-[#BDBDC1] cursor-pointer hover:text-black transition-all duration-300"
               />

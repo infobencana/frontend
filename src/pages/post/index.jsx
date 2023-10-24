@@ -6,6 +6,7 @@ import { DescriptionPost } from "@/components/post/description-post";
 import { DetailPost } from "@/components/post/detail-post";
 import { Donation } from "@/components/donation";
 import { MissingPeople } from "@/components/post/missing-people";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function Post() {
   const { loading, error, data, request } = useApi(getDisasterById);
@@ -15,16 +16,19 @@ export default function Post() {
     request(params.id);
   }, []);
 
-  if (loading) {
-    return <h1>Loading..</h1>;
-  }
-
-  if (error) {
-    return <h1>Data tidak ditemukan...</h1>;
+  if (loading || !data || error) {
+    return (
+      <div className="w-full h-[400px] flex items-center justify-center">
+        {loading ? <Spinner className="mr-2.5 text-green w-7 h-7" /> : false}
+        <p className="text-sm font-inter text-black font-semibold">
+          {loading ? "Memuat data" : "Laporan tidak ditemukan"}
+        </p>
+      </div>
+    );
   }
 
   return (
-    <div className="w-full grid grid-cols-[1fr_350px] auto-rows-auto gap-16 my-10">
+    <div className="w-full grid grid-cols-[1fr] my-3 auto-rows-auto gap-8 xl:gap-16 xl:grid-cols-[1fr_350px] xl:my-10">
       <div className="w-full h-auton">
         <DescriptionPost
           postBy={data?.user_detail}
@@ -32,7 +36,7 @@ export default function Post() {
           date={data?.timestamp}
         />
       </div>
-      <div className="flex flex-col space-y-9 w-full h-auto">
+      <div className="flex flex-col space-y-5 xl:space-y-9 w-full h-auto">
         <DetailPost
           status={data?.detail.status}
           place={data?.place}

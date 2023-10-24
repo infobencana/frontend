@@ -12,7 +12,7 @@ export function ListRequestUser() {
 
   const filterListRequest = (data) => {
     if (!data || !data.length) return;
-    return data.filter((item) => item.req_status === "requested");
+    return data.filter((item) => item.req_status === "requested").reverse();
   };
 
   useEffect(() => {

@@ -34,7 +34,7 @@ export const columns = [
     enableHiding: false,
   },
   {
-    id: "name",
+    id: "laporan bencana",
     accessorKey: "name",
     size: 700,
     header: ({ column }) => {

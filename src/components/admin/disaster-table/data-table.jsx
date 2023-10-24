@@ -112,7 +112,7 @@ export function DataTable({ data, columns, refetch }) {
                 variant="outline"
                 className="rounded-lg ml-auto border-snow text-black hover:bg-slate-100/50"
               >
-                Columns <IconChevronDown size={16} className="ml-2" />
+                Kolom <IconChevronDown size={16} className="ml-2" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -187,10 +187,6 @@ export function DataTable({ data, columns, refetch }) {
           </Table>
         </div>
         <div className="flex items-center justify-end space-x-2 py-4">
-          <div className="flex-1 text-sm text-muted-foreground">
-            {table.getFilteredSelectedRowModel().rows.length} of
-            {table.getFilteredRowModel().rows.length} row(s) selected.
-          </div>
           <div className="space-x-2">
             <Button
               variant="outline"
