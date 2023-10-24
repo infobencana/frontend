@@ -9,7 +9,7 @@ export const TextArea = forwardRef(({ className, value, ...props }, ref) => {
   useAutosizeTextArea(textAreaRef.current, value);
 
   return (
-    <div>
+    <div className="w-full">
       <textarea
         ref={textAreaRef}
         rows={1}
