@@ -38,8 +38,12 @@ export function ModalPeopleGone({
   };
 
   useEffect(() => {
-    if (!open) actionOnClose();
+    if (!open && actionOnClose) actionOnClose();
   }, [open]);
+
+  useEffect(() => {
+    form.reset(initialValue);
+  }, [JSON.stringify(initialValue)]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -48,7 +52,7 @@ export function ModalPeopleGone({
         onOpenAutoFocus={(e) => e.preventDefault()}
         onInteractOutside={(e) => e.preventDefault()}
         className={cn(
-          "w-full h-[540px] max-w-[530px] max-h-screen",
+          "w-full h-full xl:h-[540px] max-w-[530px] max-h-screen",
           "p-10 rounded-[14px] border border-snow overflow-y-auto custom-scroll",
         )}
       >

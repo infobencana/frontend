@@ -5,12 +5,12 @@ import dayjs from "dayjs";
 
 export function DescriptionPost({ description, postBy, date }) {
   return (
-    <div className="relative w-full h-fit p-10 border border-snow rounded-[14px]">
-      <div className="flex items-center space-x-3 mb-9">
+    <div className="relative w-full h-fit xl:p-10 xl:border border-snow rounded-[14px]">
+      <div className="flex items-center space-x-3 mb-6 xl:mb-9">
         <UserAvatar
           src={postBy?.picture}
           alt={postBy?.name}
-          className="w-12 h-12"
+          className="w-11 h-11 xl:w-12 xl:h-12"
           fallback={postBy?.name}
           fallBackSize={48}
         />
