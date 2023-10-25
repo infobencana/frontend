@@ -73,7 +73,7 @@ export function Comment({ disasterId }) {
               value={text}
               onChange={(e) => setText(e.target.value)}
               className={cn(
-                "min-h-[120px] bg-white border border-snow rounded-[14px] text-sm py-4 px-7 outline-green",
+                "min-h-[80px] xl:min-h-[120px] bg-white border border-snow rounded-[14px] text-sm py-3 px-4 xl:py-4 xl:px-7 outline-green",
                 loading ? "animate-pulse duration-700" : "",
               )}
               placeholder="Masukan komentar disini..."
@@ -88,7 +88,7 @@ export function Comment({ disasterId }) {
         false
       )}
       {comments?.length ? (
-        <div className="flex flex-col space-y-8 mt-14">
+        <div className="flex flex-col space-y-8 mt-10">
           {comments.map((comment) => (
             <CommentCard key={comment._id} comment={comment} />
           ))}
