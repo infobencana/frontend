@@ -14,7 +14,7 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/dropdown/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
   Table,

@@ -14,10 +14,10 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { ToastAction } from "@/components/ui/toast";
-import { SelectStatus } from "@/components/admin/post/select-status";
+import { DropdownStatusDisaster } from "@/components/dropdown/dropdown-status-disaster";
 import { DisasterLocation } from "@/components/admin/post/disaster-location";
 import { Coordinate } from "@/components/admin/post/coordinate";
-import { DisasterType } from "@/components/admin/post/disaster-type";
+import { DropdownDisasterType } from "@/components/dropdown/dropdown-disaster-type";
 import { DisasterTime } from "@/components/admin/post/disaster-time";
 import { Donation } from "@/components/admin/post/donation";
 import { TitlePost } from "@/components/admin/post/title-post";
@@ -149,12 +149,12 @@ export default function AdminPost({ onEdit }) {
                   "lg:pt-0 lg:border-t-0 lg:border-r  lg:pr-10  lg:order-1",
                 )}
               >
-                <DisasterType />
+                <DropdownDisasterType />
                 <DisasterLocation />
                 <Coordinate />
                 <DisasterTime />
                 <TotalVictim />
-                <SelectStatus />
+                <DropdownStatusDisaster />
                 <Donation
                   initialValue={onEdit ? form.getValues("donations")[0] : {}}
                 />

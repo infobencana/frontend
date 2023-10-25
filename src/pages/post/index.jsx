@@ -9,6 +9,7 @@ import { Donation } from "@/components/donation";
 import { MissingPeople } from "@/components/post/missing-people";
 import { Spinner } from "@/components/ui/spinner";
 import { Comment } from "@/components/post/comment";
+import { getTimeFromNow } from "@/utils/date";
 
 export default function Post() {
   const { loading, error, data, request } = useApi(getDisasterById);

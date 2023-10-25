@@ -1,6 +1,7 @@
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { UserAvatar } from "../user/user-avatar";
 import { UserFullname } from "../user/user-fullname";
+import { getTimeFromNow } from "@/utils/date";
 
 export function CommentCard({ comment }) {
   const matches = useMediaQuery("(max-width:1280px)");
@@ -18,7 +19,7 @@ export function CommentCard({ comment }) {
         <UserFullname
           fullname={comment.full_name}
           verified={comment.role === "admin"}
-          time={comment.timestamp}
+          time={getTimeFromNow(comment.timestamp)}
         />
         <p className="text-sm xl:text-base text-black mt-1 xl:mt-0">
           {comment.comment}

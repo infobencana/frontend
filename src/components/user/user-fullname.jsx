@@ -1,5 +1,4 @@
 import { IconDiscountCheckFilled } from "@tabler/icons-react";
-import { getTimeFromNow } from "@/utils/date";
 
 export function UserFullname({ fullname, verified, time }) {
   return (
@@ -16,7 +15,7 @@ export function UserFullname({ fullname, verified, time }) {
       )}
       {time ? (
         <p className="flex-shrink-0 text-xs mt-0.5 xl:text-sm text-gray font-medium capitalize xl:mt-[1.5px]">
-          {getTimeFromNow(time)}
+          {time}
         </p>
       ) : (
         false
