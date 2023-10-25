@@ -1,9 +1,9 @@
 import Cookies from "js-cookie";
 
-export function handleAuth(token) {
+export function handleAuth(token, redirectURI) {
   if (token) {
     Cookies.set("token", token, { expires: 3 });
-    setTimeout(() => window.location.replace("/"), 1500);
+    setTimeout(() => window.location.replace(redirectURI || ""), 1000);
   }
 }
 

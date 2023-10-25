@@ -32,7 +32,7 @@ export default function Post() {
 
   return (
     <div className="w-full grid grid-cols-[1fr] my-3 auto-rows-auto gap-8 xl:gap-16 xl:grid-cols-[1fr_350px] xl:my-10">
-      <div className="flex flex-col space-y-10 w-full h-auto">
+      <div className="flex flex-col xl:space-y-20 w-full h-auto">
         <DescriptionPost
           postBy={data?.user_detail}
           description={data?.detail?.description}

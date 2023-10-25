@@ -23,9 +23,11 @@ client.interceptors.response.use(
       );
 
       if (status === 401 && isMatch) {
-        alert("Opps! Sesi anda telah habis");
+        const url = encodeURI(window.location.href);
+
+        alert("Failed ! session is expired");
         Cookies.remove("token");
-        window.location.replace("/auth/login");
+        window.location.replace(`/auth/login?redirect=${url}`);
       }
     } else {
       error.response = {

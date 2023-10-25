@@ -1,7 +1,14 @@
+import { useUser } from "@/context/user-context";
 import { IconAlertCircleFilled } from "@tabler/icons-react";
 import { Badge } from "../badge/badge";
 import { Button } from "../ui/button";
 import { DialogTrigger } from "../ui/dialog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export function MissingPersonCard({
   personData,
@@ -19,6 +26,8 @@ export function MissingPersonCard({
     alamat: personData.address,
   };
 
+  const { user } = useUser();
+
   return (
     <div className="flex flex-col justify-between font-inter w-full h-auto bg-[#F9F9F9] rounded-[8px] px-5 py-6">
       <div>
@@ -32,16 +41,25 @@ export function MissingPersonCard({
             </p>
           </div>
           <div className="w-fit">
-            {personData.status || !requestChanging ? (
+            {!user || personData.status ? (
               <Badge className="uppercase bg-green text-white font-semibold text-xs py-0 px-1 rounded-sm">
                 {personData.status ? "ditemukan" : "hilang"}
               </Badge>
             ) : (
-              <IconAlertCircleFilled
-                onClick={() => requestClick(personData)}
-                size={18}
-                className="mt-1 text-[#BDBDC1] cursor-pointer hover:text-black transition-all duration-300"
-              />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <IconAlertCircleFilled
+                      onClick={() => requestClick(personData)}
+                      size={18}
+                      className="mt-1 text-[#BDBDC1] cursor-pointer hover:text-black transition-all duration-300"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-xs">Ubah Data</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             )}
           </div>
         </div>
