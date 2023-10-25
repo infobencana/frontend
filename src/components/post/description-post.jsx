@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 
 export function DescriptionPost({ description, postBy, date }) {
   return (
-    <div className="relative w-full h-fit xl:p-10 xl:border border-snow rounded-[14px]">
+    <div className="relative w-full h-fit rounded-md border border-snow p-6 xl:p-10 xl:rounded-[14px]">
       <div className="flex items-center space-x-3 mb-6 xl:mb-9">
         <UserAvatar
           src={postBy?.picture}

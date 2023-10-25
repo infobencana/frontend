@@ -55,3 +55,19 @@ export async function deleteDisaster(id) {
     throw error.response.data.message;
   }
 }
+
+export async function addComment(disasterId, data) {
+  try {
+    return await client.post(`/disaster/${disasterId}/discuss`, data);
+  } catch (error) {
+    throw error.response.data.message;
+  }
+}
+
+export async function getComment(disasterId) {
+  try {
+    return await client.get(`/disaster/${disasterId}/discuss`);
+  } catch (error) {
+    throw error.response.data.message;
+  }
+}

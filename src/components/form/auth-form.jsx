@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 import { FormField, FormItem, FormControl, FormMessage } from "./form";
 import { Input } from "../ui/input";
@@ -14,6 +14,7 @@ import { handleAuth } from "@/utils/auth";
 import authApi from "@/api/auth";
 
 export function AuthForm({ fields, submitText }) {
+  const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
 
   const authType = pathname.replace("/auth/", "");
@@ -38,7 +39,8 @@ export function AuthForm({ fields, submitText }) {
     });
 
     if (response.status) {
-      handleAuth(response.data.token);
+      const redirectURI = searchParams.get("redirect");
+      handleAuth(response.data.token, redirectURI);
     }
   };
 
