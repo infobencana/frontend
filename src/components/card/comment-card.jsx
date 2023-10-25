@@ -20,7 +20,9 @@ export function CommentCard({ comment }) {
           verified={comment.role === "admin"}
           time={comment.timestamp}
         />
-        <p className="text-sm xl:text-base text-black">{comment.comment}</p>
+        <p className="text-sm xl:text-base text-black mt-1 xl:mt-0">
+          {comment.comment}
+        </p>
       </div>
     </div>
   );
