@@ -56,7 +56,7 @@ export function DisasterList({ search, title, allowParams }) {
   };
 
   useEffect(() => {
-    // if intiial params not ready will use query
+    // if intial params not ready will use query
     fetching(initialSearchParams);
   }, []);
 
