@@ -5,7 +5,7 @@ import { getDisasterById } from "@/api/disaster";
 import { useEffect } from "react";
 import { DescriptionPost } from "@/components/post/description-post";
 import { DetailPost } from "@/components/post/detail-post";
-import { Donation } from "@/components/donation";
+import { Donation } from "@/components/post/donation";
 import { MissingPeople } from "@/components/post/missing-people";
 import { Spinner } from "@/components/ui/spinner";
 import { Comment } from "@/components/post/comment";

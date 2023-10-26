@@ -12,7 +12,7 @@ export function DisasterPostCard({ disaster }) {
   return (
     <Link
       to="/"
-      className="w-full h-auto bg-white border border-snow px-4 py-6 sm:p-7 rounded-xl font-inter hover:border-green transition-all duration-300"
+      className="w-full h-auto bg-white border border-snow px-4 py-6 sm:p-7 rounded-xl font-inter hover:border-green animate-in fade-in-20 duration-300 transition-all"
     >
       <DisasterStatusBadge status="pemulihan" />
       <h1 className="font-bold text-base leading-6 mt-4 line-clamp-3 sm:text-lg sm:leading-7">

@@ -71,3 +71,11 @@ export async function getComment(disasterId) {
     throw error.response.data.message;
   }
 }
+
+export async function getDisasterByQuery({ params }) {
+  try {
+    return await client.get("/disaster", { params });
+  } catch (error) {
+    throw error.response.data.message;
+  }
+}

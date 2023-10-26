@@ -5,6 +5,7 @@ import Error from "./error";
 import Profile from "./profile";
 import Search from "./search";
 import Post from "./post";
+import NotFound from "./404";
 
 import HomeAdmin from "./admin";
 import AdminPost from "./admin/post";
@@ -21,4 +22,5 @@ export {
   AdminPost,
   Post,
   PeopleGoneRequest,
+  NotFound,
 };

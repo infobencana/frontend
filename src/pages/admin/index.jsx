@@ -1,5 +1,5 @@
-import DisasterTable from "@/components/admin/disaster-table";
-import { ListRequestUser } from "@/components/admin/missing-people/list-request-user";
+import DisasterTable from "@/components/disaster/disaster-table";
+import { ListRequestUser } from "@/components/admin/list-request-user";
 
 export default function HomeAdmin() {
   return (

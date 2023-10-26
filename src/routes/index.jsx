@@ -11,6 +11,7 @@ import {
   AdminPost,
   Post,
   PeopleGoneRequest,
+  NotFound,
 } from "@/pages";
 import { PrivateRoute } from "./private-route";
 
@@ -85,4 +86,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  { element: <NotFound />, path: "*" },
 ]);
