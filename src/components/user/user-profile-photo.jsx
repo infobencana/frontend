@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/dropdown/dropdown-menu";
 
 export function UserProfilePhoto() {
   const [loading, setLoading] = useState(false);

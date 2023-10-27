@@ -11,7 +11,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { cn } from "@/utils/cn";
 
-export function DisasterType() {
+export function DropdownDisasterType() {
   const { control, getFieldState } = useFormContext();
   const { error } = getFieldState("detail.type");
 

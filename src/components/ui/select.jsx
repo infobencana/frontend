@@ -10,7 +10,7 @@ const SelectGroup = SelectPrimitive.Group;
 const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef(
-  ({ className, children, ...props }, ref) => (
+  ({ className, children, dropdown = true, ...props }, ref) => (
     <SelectPrimitive.Trigger
       ref={ref}
       className={cn(
@@ -20,9 +20,13 @@ const SelectTrigger = React.forwardRef(
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon asChild>
-        <IconChevronDown size={16} stroke={2} className="opacity-50" />
-      </SelectPrimitive.Icon>
+      {dropdown ? (
+        <SelectPrimitive.Icon asChild>
+          <IconChevronDown size={16} stroke={2} className="opacity-50" />
+        </SelectPrimitive.Icon>
+      ) : (
+        false
+      )}
     </SelectPrimitive.Trigger>
   ),
 );
@@ -60,7 +64,10 @@ SelectContent.displayName = SelectPrimitive.Content.displayName;
 const SelectLabel = React.forwardRef(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
+    className={cn(
+      "py-1.5 pl-8 pr-2 text-sm font-semibold font-inter",
+      className,
+    )}
     {...props}
   />
 ));
@@ -71,7 +78,7 @@ const SelectItem = React.forwardRef(
     <SelectPrimitive.Item
       ref={ref}
       className={cn(
-        "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 font-inter",
         className,
       )}
       {...props}

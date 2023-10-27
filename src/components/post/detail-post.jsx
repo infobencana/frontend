@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { DisasterStatusBadge } from "../badge/disaster-status-badge";
 import { PanelCard } from "../card/panel-card";
 
-export function DetailPost({ status, place, coordinate, date, victim }) {
+export function DetailPost({ status, place, coordinate, date, victim, type }) {
   return (
     <PanelCard>
       <div className="w-full h-auto flex flex-col space-y-5 font-inter">
@@ -11,6 +11,12 @@ export function DetailPost({ status, place, coordinate, date, victim }) {
             status bencana
           </h2>
           <DisasterStatusBadge status={status} />
+        </div>
+        <div className="border-b border-b-snow pb-[15px]">
+          <h2 className="font-bold text-black text-sm mb-2.5 uppercase">
+            Jenis Bencana
+          </h2>
+          <p className="text-sm text-black font-medium capitalize">{type}</p>
         </div>
         <div className="border-b border-b-snow pb-[15px]">
           <h2 className="font-bold text-black text-sm mb-2.5 uppercase">

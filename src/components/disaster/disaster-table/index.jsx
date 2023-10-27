@@ -6,7 +6,7 @@ import { useApi } from "@/hooks/use-api";
 import { Spinner } from "@/components/ui/spinner";
 
 function DisasterTable() {
-  const { data, error, loading, request } = useApi(getAllDisasters);
+  const { data, loading, request } = useApi(getAllDisasters);
 
   const filterDisasterData = () => {
     if (!data || loading) return;

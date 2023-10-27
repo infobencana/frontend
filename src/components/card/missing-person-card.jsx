@@ -41,7 +41,7 @@ export function MissingPersonCard({
             </p>
           </div>
           <div className="w-fit">
-            {!user || personData.status ? (
+            {!user || personData.status || !requestChanging ? (
               <Badge className="uppercase bg-green text-white font-semibold text-xs py-0 px-1 rounded-sm">
                 {personData.status ? "ditemukan" : "hilang"}
               </Badge>
@@ -56,7 +56,7 @@ export function MissingPersonCard({
                     />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p className="text-xs">Ubah Data</p>
+                    <p className="text-xs">Laporkan Perubahan</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>

@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuContent,
   DropdownMenuLabel,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/dropdown/dropdown-menu";
 
 export const columns = [
   {

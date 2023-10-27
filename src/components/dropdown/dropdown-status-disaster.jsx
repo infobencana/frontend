@@ -11,7 +11,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { cn } from "@/utils/cn";
 
-export function SelectStatus() {
+export function DropdownStatusDisaster() {
   const { control, getFieldState } = useFormContext();
   const { error } = getFieldState("detail.status");
   return (

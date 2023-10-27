@@ -49,11 +49,11 @@ export function ListRequestUser() {
               className="text-sm cursor-pointer"
               key={item._id}
             >
-              <div className="flex items-center space-x-2 font-medium">
+              <div className="flex justify-between items-start space-x-2 font-medium">
                 <div className="max-w-[200px] w-fit overflow-hidden">
                   <h2 className="font-semibold text-black">{item.req_by}</h2>
                 </div>
-                <span className="text-xs text-gray ">
+                <span className="text-xs text-gray">
                   {getTimeFromNow(item.timestamp)}
                 </span>
               </div>
