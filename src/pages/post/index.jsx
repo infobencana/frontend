@@ -48,6 +48,7 @@ export default function Post() {
           coordinate={`${data?.latitude}, ${data?.longitude}`}
           date={data?.date}
           victim={data?.victim}
+          type={data?.detail?.type}
         />
         {data?.people_gone?.length ? (
           <MissingPeople data={data?.people_gone} />

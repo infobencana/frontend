@@ -1,26 +1,38 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "@/app";
-import {
-  Home,
-  Register,
-  Login,
-  Error,
-  Profile,
-  Search,
-  HomeAdmin,
-  AdminPost,
-  Post,
-  PeopleGoneRequest,
-  NotFound,
-} from "@/pages";
 import { PrivateRoute } from "./private-route";
-
+import { Spinner } from "@/components/ui/spinner";
 import AppLayout from "@/layouts/app-layout";
 import AuthLayout from "@/layouts/auth-layout";
+import Error from "@/pages/error";
+import NotFound from "@/pages/404";
+
+const Home = lazy(() => import("@/pages/home"));
+const Register = lazy(() => import("@/pages/auth/register"));
+const Login = lazy(() => import("@/pages/auth/login"));
+const AdminPost = lazy(() => import("@/pages/admin/post"));
+const Profile = lazy(() => import("@/pages/profile"));
+const Search = lazy(() => import("@/pages/search"));
+const HomeAdmin = lazy(() => import("@/pages/admin"));
+const Post = lazy(() => import("@/pages/post"));
+const PeopleGoneRequest = lazy(() =>
+  import("@/pages/admin/people-gone-request"),
+);
 
 export const router = createBrowserRouter([
   {
-    element: <App />,
+    element: (
+      <Suspense
+        fallback={
+          <div className="w-full h-full flex justify-center items-center">
+            <Spinner className="text-green w-10 h-10" />
+          </div>
+        }
+      >
+        <App />
+      </Suspense>
+    ),
     errorElement: <Error />,
     children: [
       {

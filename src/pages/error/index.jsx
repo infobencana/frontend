@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button";
 export default function Error() {
   const error = useRouteError();
 
-  console.log(error);
-
   return (
     <div className="flex flex-col justify-center items-center w-full h-full font-inter px-4">
       <div className="max-w-[500px] flex flex-col justify-center items-center">

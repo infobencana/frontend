@@ -22,7 +22,7 @@ export function Header() {
           "max-w-[1320px] 2xl:max-w-[1400px] w-full h-full mx-auto",
         )}
       >
-        <Link to="/" className="w-fit h-fit">
+        <Link to="" className="w-fit h-fit">
           <img
             src={Logo}
             alt="infobencana logo"

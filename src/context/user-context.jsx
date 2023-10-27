@@ -20,7 +20,7 @@ function UserProvider(props) {
       }
     }
 
-    setTimeout(() => setLoading(false), 800);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -29,15 +29,6 @@ function UserProvider(props) {
 
   if (loading) {
     return <Loading />;
-  }
-
-  if (error && error.message) {
-    return (
-      <div>
-        <h1>Oppss error</h1>
-        <p>{error.message}</p>
-      </div>
-    );
   }
 
   return (

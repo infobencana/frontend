@@ -72,9 +72,21 @@ export async function getComment(disasterId) {
   }
 }
 
-export async function getDisasterByQuery({ params }) {
+export async function getDisasterByQuery(queryParams) {
   try {
-    return await client.get("/disaster", { params });
+    const response = await client.get("/disaster", {
+      params: queryParams,
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response.data.message;
+  }
+}
+
+export async function getActiveDisaster() {
+  try {
+    const response = await client.get("/disaster/lat_long");
+    return response.data;
   } catch (error) {
     throw error.response.data.message;
   }
