@@ -10,12 +10,24 @@ import {
 } from "@/components/ui/select";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
-export function DropdownFilterDisaster({ onChange, defaultValue }) {
+export function DropdownFilterDisaster({
+  open,
+  setOpen,
+  onChange,
+  defaultValue,
+}) {
   const matches = useMediaQuery("(min-width: 640px)");
 
   return (
     <Select
+      open={open}
+      setOpen={setOpen}
       onValueChange={(v) => onChange(v)}
+      onOpenChange={() => {
+        setTimeout(() => {
+          setOpen(!open);
+        }, 0);
+      }}
       defaultValue={defaultValue || "newest"}
     >
       <SelectTrigger
