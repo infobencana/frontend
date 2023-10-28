@@ -13,7 +13,7 @@ export function Search({ onSearchSubmit }) {
     const encodeURI = encodeURIComponent(search);
 
     if (onSearchSubmit) onSearchSubmit();
-    navigate(`/search?bencana=${encodeURI}`);
+    navigate(`/search?bencana=${encodeURI}&sort=newest`);
   };
 
   return (

@@ -11,7 +11,7 @@ import Map, {
 import "maplibre-gl/dist/maplibre-gl.css";
 import { cn } from "@/utils/cn";
 
-export function DisasterMap({ data }) {
+export default function DisasterMap({ data }) {
   const [popupInfo, setPopupInfo] = useState(null);
   const geoControlRef = useRef();
   const matches = useMediaQuery("(min-width:1280px)");

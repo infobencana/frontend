@@ -93,6 +93,10 @@ export function Comment({ disasterId }) {
             <CommentCard key={comment._id} comment={comment} />
           ))}
         </div>
+      ) : !user ? (
+        <p className="text-sm text-gray text-center font-semibold">
+          Tidak ada komentar
+        </p>
       ) : (
         false
       )}

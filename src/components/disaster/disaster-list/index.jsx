@@ -7,29 +7,39 @@ import { Spinner } from "@/components/ui/spinner";
 import { DropdownFilterDisaster } from "@/components/dropdown/dropdown-filter-disaster";
 import { DisasterPostCard } from "@/components/card/disaster-post-card";
 
-export function DisasterList({ search, title, allowParams, initialParams }) {
+export function DisasterList({ title, modifyParamsOnChange, initialParams }) {
   const [query, setQuery] = useState({ sort: "newest" });
-  const [setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const { loading, error, data, request } = useApi(getDisasterByQuery);
 
   const onFilterChange = (value) => {
     const params = {};
-    const sort = ["newest", "oldest"].includes(value);
+    const search = searchParams.get("bencana");
 
-    params[sort ? "sort" : "status"] = value;
-
-    if (search) params["search"] = search;
-    if (allowParams) setSearchParams(params);
+    const isSort = ["newest", "oldest"].includes(value);
+    params[isSort ? "sort" : "status"] = value;
 
     if (JSON.stringify(params) !== JSON.stringify(query)) {
+      if (modifyParamsOnChange) setSearchParams(params);
+
       setQuery(params);
-      request(params);
+      request({ search, ...params });
+    }
+
+    if (modifyParamsOnChange) {
+      setSearchParams({
+        bencana: search,
+        ...params,
+      });
     }
   };
 
+  const dropdownValue = initialParams || query;
+
   useEffect(() => {
     request(initialParams || query);
-  }, []);
+  }, [initialParams, query]);
 
   return (
     <>
@@ -37,7 +47,7 @@ export function DisasterList({ search, title, allowParams, initialParams }) {
         {title}
         <div className="ml-auto w-fit sm:w-[200px]">
           <DropdownFilterDisaster
-            defaultValue={query}
+            defaultValue={dropdownValue["sort"] || dropdownValue["status"]}
             onChange={onFilterChange}
           />
         </div>

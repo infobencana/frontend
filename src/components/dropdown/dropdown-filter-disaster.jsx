@@ -10,11 +10,14 @@ import {
 } from "@/components/ui/select";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
-export function DropdownFilterDisaster({ onChange }) {
+export function DropdownFilterDisaster({ onChange, defaultValue }) {
   const matches = useMediaQuery("(min-width: 640px)");
 
   return (
-    <Select onValueChange={(v) => onChange(v)} defaultValue="newest">
+    <Select
+      onValueChange={(v) => onChange(v)}
+      defaultValue={defaultValue || "newest"}
+    >
       <SelectTrigger
         dropdown={matches}
         className="w-8 h-8 rounded-lg justify-center ml-auto border-snow text-black font-semibold font-inter sm:w-full sm:h-12 sm:justify-between"
