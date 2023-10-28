@@ -12,7 +12,7 @@ import { DialogClose } from "@radix-ui/react-dialog";
 
 export function UserMenuMobile() {
   const [openSheet, setOpenSheet] = useState(false);
-  const { user } = useUser();
+  const { user, loading, error } = useUser();
 
   return (
     <ModalSignOut>
@@ -35,7 +35,7 @@ export function UserMenuMobile() {
                 <Search onSearchSubmit={() => setOpenSheet(false)} />
               </div>
               <div className="w-full mt-6">
-                {user ? (
+                {!loading && user ? (
                   <div className="flex flex-col space-y-4">
                     <UserInfo user={user} />
                     <DialogClose className="w-full h-fit">
@@ -45,6 +45,9 @@ export function UserMenuMobile() {
                     </DialogClose>
                   </div>
                 ) : (
+                  false
+                )}
+                {!loading && (error || !user) ? (
                   <div className="px-5">
                     <h2 className="uppercase text-center text-xs font-semibold text-black/40">
                       Bergabung
@@ -63,6 +66,8 @@ export function UserMenuMobile() {
                       </Button>
                     </div>
                   </div>
+                ) : (
+                  false
                 )}
               </div>
             </div>

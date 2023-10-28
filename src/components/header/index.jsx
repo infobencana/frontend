@@ -10,7 +10,7 @@ import { Search } from "../ui/search";
 import Logo from "@/assets/images/infobencana.svg";
 
 export function Header() {
-  const { user } = useUser();
+  const { user, loading, error } = useUser();
   const matches = useMediaQuery("(min-width:1024px)");
   const isAdmin = user?.role === "admin";
 
@@ -32,7 +32,7 @@ export function Header() {
         </Link>
         <div className="ml-auto">
           {matches ? (
-            <div className="flex items-center console.warn();-fit h-full space-x-8">
+            <div className="flex items-center w-fit h-full space-x-8">
               {isAdmin ? (
                 <Button
                   size="lg"
@@ -51,9 +51,8 @@ export function Header() {
               ) : (
                 <Search />
               )}
-              {user && !user.error ? (
-                <UserMenu />
-              ) : (
+              {!loading && user ? <UserMenu /> : false}
+              {!loading && (!user || error) ? (
                 <div className="flex w-fit h-full items-center justify-between space-x-3">
                   <Button size="lg" className="rounded-3xl px-8" asChild>
                     <Link to="/auth/login">Masuk</Link>
@@ -67,6 +66,8 @@ export function Header() {
                     <Link to="/auth/register">Daftar</Link>
                   </Button>
                 </div>
+              ) : (
+                false
               )}
             </div>
           ) : (

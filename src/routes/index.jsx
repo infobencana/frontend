@@ -2,7 +2,8 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "@/app";
 import { PrivateRoute } from "./private-route";
-import { Spinner } from "@/components/ui/spinner";
+import { Loading } from "@/components/ui/loading";
+
 import AppLayout from "@/layouts/app-layout";
 import AuthLayout from "@/layouts/auth-layout";
 import Error from "@/pages/error";
@@ -23,13 +24,7 @@ const PeopleGoneRequest = lazy(() =>
 export const router = createBrowserRouter([
   {
     element: (
-      <Suspense
-        fallback={
-          <div className="w-full h-full flex justify-center items-center">
-            <Spinner className="text-green w-10 h-10" />
-          </div>
-        }
-      >
+      <Suspense fallback={<Loading />}>
         <App />
       </Suspense>
     ),

@@ -14,7 +14,7 @@ export function Comment({ disasterId }) {
   const [comments, setComments] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const { user } = useUser();
+  const { user, loading: userLoad } = useUser();
   const { toast } = useToast();
 
   const submitComment = async (e) => {
@@ -59,7 +59,7 @@ export function Comment({ disasterId }) {
 
   return (
     <div className="w-full h-auto my-8 rounded-none xl:rounded-[14px] xl:my-0 xl:bg-[#F9FAFB] xl:px-10 xl:py-16">
-      {user ? (
+      {!userLoad && user ? (
         <div className="w-full flex space-x-4 items-start">
           <UserAvatar
             src={user?.photo_profile}

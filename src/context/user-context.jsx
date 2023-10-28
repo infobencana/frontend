@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getCurrentUser } from "@/api/user";
 import { getToken } from "@/utils/auth";
-import { Loading } from "@/components/ui/loading";
 
 const UserContext = createContext(null);
 
@@ -26,10 +25,6 @@ function UserProvider(props) {
   useEffect(() => {
     getUserData();
   }, []);
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <UserContext.Provider
