@@ -7,8 +7,8 @@ import AppLayout from "@/layouts/app-layout";
 import AuthLayout from "@/layouts/auth-layout";
 import Error from "@/pages/error";
 import NotFound from "@/pages/404";
+import Home from "@/pages/home";
 
-const Home = lazy(() => import("@/pages/home"));
 const Register = lazy(() => import("@/pages/auth/register"));
 const Login = lazy(() => import("@/pages/auth/login"));
 const AdminPost = lazy(() => import("@/pages/admin/post"));

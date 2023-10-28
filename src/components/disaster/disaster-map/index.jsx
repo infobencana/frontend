@@ -11,7 +11,7 @@ import Map, {
 import "maplibre-gl/dist/maplibre-gl.css";
 import { cn } from "@/utils/cn";
 
-export function DisasterMap({ data }) {
+export default function DisasterMap({ data }) {
   const [popupInfo, setPopupInfo] = useState(null);
   const geoControlRef = useRef();
   const matches = useMediaQuery("(min-width:1280px)");
@@ -51,7 +51,9 @@ export function DisasterMap({ data }) {
       }}
       style={{ width: "100%", height: "100%", borderRadius: "8px" }}
       attributionControl={false}
-      mapStyle="https://api.maptiler.com/maps/dataviz-dark/style.json?key=GOiOnlqpSQdG1jXv2eHv"
+      mapStyle={`https://api.maptiler.com/maps/dataviz-dark/style.json?key=${
+        import.meta.env.VITE_MAP_TILER_KEY
+      }`}
     >
       {pin}
       <NavigationControl position="bottom-right" visualizePitch />

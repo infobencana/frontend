@@ -1,9 +1,12 @@
+import { lazy } from "react";
 import { useApi } from "@/hooks/use-api";
-import { DisasterMap } from "@/components/disaster/disaster-map";
 import { DisasterList } from "@/components/disaster/disaster-list";
 import { getActiveDisaster } from "@/api/disaster";
 import { Spinner } from "@/components/ui/spinner";
 import { useEffect, useMemo } from "react";
+import { Helmet } from "react-helmet";
+
+const DisasterMap = lazy(() => import("@/components/disaster/disaster-map"));
 
 export default function Home() {
   const { loading, error, data, request } = useApi(getActiveDisaster);
@@ -26,16 +29,14 @@ export default function Home() {
     request();
   }, []);
 
-  if (loading || error || !data?.length) {
+  if (loading || error) {
     return (
       <div className="w-full flex items-center justify-center h-[350px] sm:h-[450px] lg:h-[500px]">
         {loading ? (
           <Spinner className="w-6 h-6 lg:w-10 lg:h-10 text-green" />
         ) : (
           <p className="text-sm font-semibold text-black font-inter">
-            {error
-              ? "Tidak dapat menampilkan data bencana alam"
-              : "Data tidak tersedia"}
+            Tidak dapat menampilkan data bencana alam
           </p>
         )}
       </div>
@@ -43,9 +44,12 @@ export default function Home() {
   }
 
   return (
-    <div className=" w-full font-inter flex flex-col space-y-14 lg:space-y-14 mb-10 sm:mt-6 sm:mb-20">
-      <div className="w-full grid grid-cols-[1fr] auto-rows-auto lg:grid-cols-[1fr,375px] lg:auto-rows-[500px] gap-4   xl:gap-20">
-        <div className="flex justify-center items-center w-full h-[350px] sm:h-[450px] lg:h-full">
+    <div className=" w-full font-inter flex flex-col space-y-14 lg:space-y-0 mb-10 sm:mt-6 sm:mb-20 justify-center items-center">
+      <Helmet>
+        <title>Home - Infobencana</title>
+      </Helmet>
+      <div className="w-full grid grid-cols-[1fr] auto-rows-auto lg:grid-cols-[1fr,375px] lg:auto-rows-[500px] gap-4 xl:gap-20">
+        <div className="flex justify-center items-center w-full h-[350px] sm:h-[450px] lg:h-[full]">
           <DisasterMap data={data} />
         </div>
         <div className="h-full">
@@ -66,7 +70,7 @@ export default function Home() {
                 </p>
               </div>
               <p className="text-black text-sm font-medium">
-                {summaryDisaster.darurat}
+                {summaryDisaster?.darurat}
               </p>
             </div>
             <div className="flex justify-between items-center space-x-2">
@@ -77,7 +81,7 @@ export default function Home() {
                 </p>
               </div>
               <p className="text-black text-sm font-medium">
-                {summaryDisaster.waspada}
+                {summaryDisaster?.waspada}
               </p>
             </div>
             <div className="flex justify-between items-center space-x-2">
@@ -88,7 +92,7 @@ export default function Home() {
                 </p>
               </div>
               <p className="text-black text-sm font-medium">
-                {summaryDisaster.totalKorban}
+                {summaryDisaster?.totalKorban}
               </p>
             </div>
           </div>

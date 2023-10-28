@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FormProvider, useForm, Controller } from "react-hook-form";
+import { Helmet } from "react-helmet";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { disasterFormSchema } from "@/utils/schema";
 import { uploadImageDisaster } from "@/api/disaster";
@@ -131,6 +132,9 @@ export default function AdminPost({ onEdit }) {
 
   return (
     <FormProvider {...form}>
+      <Helmet>
+        <title>Admin Post - Infobencana</title>
+      </Helmet>
       {formLoading ? (
         <div className="w-full h-[400px] flex items-center justify-center">
           <Spinner className="mr-2 text-gray/50" />

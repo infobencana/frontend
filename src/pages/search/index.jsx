@@ -1,22 +1,49 @@
-import { useMemo } from "react";
+import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useSearchParams } from "react-router-dom";
+import { DisasterList } from "@/components/disaster/disaster-list";
 
 export default function Search() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const initialSearchParams = useMemo(() => {
-    const params = {};
+  const initialParams = () => {
+    const params = {
+      search: searchParams.get("bencana") || "",
+      sort: searchParams.get("sort") || "newest",
+    };
 
     const statusParam = searchParams.get("status");
-    const sortParam = searchParams.get("sort") || "newest";
-    const searchParams = searchParams.get("search");
 
-    if (statusParam) params["status"] = statusParam;
-    if (sortParam) params["sort"] = sortParam;
-    if (searchParams) params["search"] = searchParams || "";
+    if (statusParam) {
+      delete params.sort;
+      params["status"] = statusParam;
+    }
 
     return params;
+  };
+
+  const replaceEmptyQueryParams = () => {
+    const searchParam = searchParams.get("bencana");
+    const sortParam = searchParams.get("sort");
+
+    if (!searchParam) searchParams.set("bencana", "");
+    if (!sortParam) searchParams.set("sort", "newest");
+
+    setSearchParams(searchParams);
+  };
+
+  useEffect(() => {
+    replaceEmptyQueryParams();
   }, []);
 
-  return <p>Keyword pencarian : {searchParams.get("bencana")}</p>;
+  return (
+    <>
+      <Helmet>
+        <title>
+          Bencana {searchParams.get("bencana") || " "} - Infobencana
+        </title>
+      </Helmet>
+      <DisasterList modifyParamsOnChange initialParams={initialParams()} />
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {
@@ -65,6 +66,9 @@ export default function PeopleGoneRequest() {
 
   return (
     <Dialog open={open}>
+      <Helmet>
+        <title>Request orang hilang - Infobencana</title>
+      </Helmet>
       <DialogContent
         closeIcon={false}
         className="custom-scroll outline-0 flex flex-col overflow-y-auto px-4 py-10 lg:p-10 font-inter max-w-full lg:max-w-[995px] w-full h-full lg:h-auto lg:min-h-[530px]"
