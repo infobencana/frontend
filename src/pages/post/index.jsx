@@ -1,4 +1,5 @@
 import { useApi } from "@/hooks/use-api";
+import { Helmet } from "react-helmet";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useParams } from "react-router-dom";
 import { getDisasterById } from "@/api/disaster";
@@ -9,7 +10,6 @@ import { Donation } from "@/components/post/donation";
 import { MissingPeople } from "@/components/post/missing-people";
 import { Spinner } from "@/components/ui/spinner";
 import { Comment } from "@/components/post/comment";
-import { getTimeFromNow } from "@/utils/date";
 
 export default function Post() {
   const { loading, error, data, request } = useApi(getDisasterById);
@@ -33,6 +33,9 @@ export default function Post() {
 
   return (
     <div className="w-full grid grid-cols-[1fr] my-3 auto-rows-auto gap-8 xl:gap-16 xl:grid-cols-[1fr_350px] xl:my-10">
+      <Helmet>
+        <title>{data?.name} - Infobencana</title>
+      </Helmet>
       <div className="flex flex-col xl:space-y-20 w-full h-auto">
         <DescriptionPost
           postBy={data?.user_detail}

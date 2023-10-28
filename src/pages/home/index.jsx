@@ -4,6 +4,7 @@ import { DisasterList } from "@/components/disaster/disaster-list";
 import { getActiveDisaster } from "@/api/disaster";
 import { Spinner } from "@/components/ui/spinner";
 import { useEffect, useMemo } from "react";
+import { Helmet } from "react-helmet";
 
 const DisasterMap = lazy(() => import("@/components/disaster/disaster-map"));
 
@@ -44,6 +45,9 @@ export default function Home() {
 
   return (
     <div className=" w-full font-inter flex flex-col space-y-14 lg:space-y-0 mb-10 sm:mt-6 sm:mb-20 justify-center items-center">
+      <Helmet>
+        <title>Home - Infobencana</title>
+      </Helmet>
       <div className="w-full grid grid-cols-[1fr] auto-rows-auto lg:grid-cols-[1fr,375px] lg:auto-rows-[500px] gap-4 xl:gap-20">
         <div className="flex justify-center items-center w-full h-[350px] sm:h-[450px] lg:h-[full]">
           <DisasterMap data={data} />

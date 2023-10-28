@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useSearchParams } from "react-router-dom";
 import { DisasterList } from "@/components/disaster/disaster-list";
 
@@ -35,5 +36,14 @@ export default function Search() {
     replaceEmptyQueryParams();
   }, []);
 
-  return <DisasterList modifyParamsOnChange initialParams={initialParams()} />;
+  return (
+    <>
+      <Helmet>
+        <title>
+          Bencana {searchParams.get("bencana") || " "} - Infobencana
+        </title>
+      </Helmet>
+      <DisasterList modifyParamsOnChange initialParams={initialParams()} />
+    </>
+  );
 }
