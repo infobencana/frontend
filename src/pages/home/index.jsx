@@ -55,10 +55,10 @@ export default function Home() {
         <div className="h-full">
           <div className="w-full mx-auto pb-4 border-b border-b-snow">
             <h1 className="text-base lg:text-lg font-bold text-black">
-              Laporan Bencana
+              Peta Bencana
             </h1>
             <p className="text-sm text-gray mt-0.5">
-              Rangkuman peta bencana alam aktif
+              Laporan bencana alam aktif
             </p>
           </div>
           <div className="mt-4 lg:mt-6 flex flex-col space-y-3 lg:space-y-4">
