@@ -67,9 +67,9 @@ export default function DisasterMap({ data }) {
           longitude={Number(popupInfo.longitude)}
           latitude={Number(popupInfo.latitude)}
           onClose={() => setPopupInfo(null)}
-          className="animate-in fade-in duration-300 bg-[rgba(0,0,0,.5)] text-white px-4 pb-3 rounded-md backdrop-blur-md"
+          className="animate-in fade-in duration-300 bg-white text-black px-4 pb-3 rounded-md"
         >
-          <div className="font-inter">
+          <div className="font-inter font-medium">
             <p className="leading-5 capitalize">Lokasi : {popupInfo.place}</p>
             <p className="leading-5 capitalize">
               Tipe Bencana : {popupInfo.type}
