@@ -8,6 +8,7 @@ import { DropdownFilterDisaster } from "@/components/dropdown/dropdown-filter-di
 import { DisasterPostCard } from "@/components/card/disaster-post-card";
 
 export function DisasterList({ title, modifyParamsOnChange, initialParams }) {
+  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState({ sort: "newest" });
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -49,6 +50,8 @@ export function DisasterList({ title, modifyParamsOnChange, initialParams }) {
           <DropdownFilterDisaster
             defaultValue={dropdownValue["sort"] || dropdownValue["status"]}
             onChange={onFilterChange}
+            open={open}
+            setOpen={setOpen}
           />
         </div>
       </div>
