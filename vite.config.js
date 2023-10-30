@@ -13,7 +13,7 @@ export default defineConfig({
     react(),
     compression({
       threshold: 512000,
-      algorithm: "brotliCompress",
+      algorithm: "gzip",
       exclude: [/\.(br)$ /, /\.(gz)$/],
       deleteOriginalAssets: true,
     }),
