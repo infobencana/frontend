@@ -27,7 +27,7 @@ Infobencana adalah sebuah platform yang bertujuan untuk menyediakan informasi be
 
 ## Usage
 
-1. Ensure the backend server is up and running.
+1. create ```.env``` file with copying ```.env.example``` and config with your own env variable value
 2. Start the frontend application: `npm run dev`.
 3. Access the application in your web browser at `http://localhost:5173`.
 
