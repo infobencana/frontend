@@ -41,9 +41,8 @@ export default function DisasterMap({ data }) {
   }, [JSON.stringify(data), isLoaded]);
 
   return (
-    <div className="relative w-full h-full">
+    <div className="w-full h-full">
       <Map
-        reuseMaps
         initialViewState={{
           longitude: 112,
           latitude: -0.3,
@@ -91,16 +90,6 @@ export default function DisasterMap({ data }) {
           false
         )}
       </Map>
-      {!isLoaded ? (
-        <div
-          className={cn(
-            "absolute inset-0 bg-slate-100 z-10",
-            isLoaded ? "" : "animate-pulse",
-          )}
-        ></div>
-      ) : (
-        false
-      )}
     </div>
   );
 }

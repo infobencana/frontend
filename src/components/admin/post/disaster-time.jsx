@@ -1,8 +1,9 @@
-import dayjs from "dayjs";
 import { useFormContext, Controller } from "react-hook-form";
 import { DateTimeField, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Label } from "@/components/ui/label";
+import dayjs from "dayjs";
+import "dayjs/locale/id";
 
 export function DisasterTime() {
   const { control, getFieldState } = useFormContext();
