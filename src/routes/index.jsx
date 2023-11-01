@@ -5,11 +5,11 @@ import { PrivateRoute } from "./private-route";
 import { Loading } from "@/components/ui/loading";
 
 import AppLayout from "@/layouts/app-layout";
-import AuthLayout from "@/layouts/auth-layout";
 import Error from "@/pages/error";
-import NotFound from "@/pages/404";
+import NotFound from "@/pages/NotFound";
 import Home from "@/pages/home";
 
+const AuthLayout = lazy(() => import("@/layouts/auth-layout"));
 const Register = lazy(() => import("@/pages/auth/register"));
 const Login = lazy(() => import("@/pages/auth/login"));
 const AdminPost = lazy(() => import("@/pages/admin/post"));
@@ -17,6 +17,7 @@ const Profile = lazy(() => import("@/pages/profile"));
 const Search = lazy(() => import("@/pages/search"));
 const HomeAdmin = lazy(() => import("@/pages/admin"));
 const Post = lazy(() => import("@/pages/post"));
+const About = lazy(() => import("@/pages/about"));
 const PeopleGoneRequest = lazy(() =>
   import("@/pages/admin/people-gone-request"),
 );
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: "about",
+        element: <About />,
       },
       {
         element: <AuthLayout />,

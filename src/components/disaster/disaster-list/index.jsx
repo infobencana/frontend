@@ -7,7 +7,11 @@ import { Spinner } from "@/components/ui/spinner";
 import { DropdownFilterDisaster } from "@/components/dropdown/dropdown-filter-disaster";
 import { DisasterPostCard } from "@/components/card/disaster-post-card";
 
-export function DisasterList({ title, modifyParamsOnChange, initialParams }) {
+export default function DisasterList({
+  title,
+  modifyParamsOnChange,
+  initialParams,
+}) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState({ sort: "newest" });
   const [searchParams, setSearchParams] = useSearchParams();
