@@ -1,10 +1,10 @@
 import { lazy } from "react";
 import { useApi } from "@/hooks/use-api";
-import { DisasterList } from "@/components/disaster/disaster-list";
 import { getActiveDisaster } from "@/api/disaster";
 import { Spinner } from "@/components/ui/spinner";
 import { useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet";
+import DisasterList from "@/components/disaster/disaster-list";
 
 const DisasterMap = lazy(() => import("@/components/disaster/disaster-map"));
 
@@ -14,14 +14,10 @@ export default function Home() {
   const summaryDisaster = useMemo(() => {
     if (!data) return null;
 
-    const darurat = data.filter((disaster) => disaster.status === "darurat");
-    const waspada = data.filter((disaster) => disaster.status === "waspada");
-    const totalKorban = data.reduce((acc, cur) => acc + cur.victim, 0);
-
     return {
-      darurat: darurat.length,
-      waspada: waspada.length,
-      totalKorban,
+      darurat: data.filter((disaster) => disaster.status === "darurat").length,
+      waspada: data.filter((disaster) => disaster.status === "waspada").length,
+      totalKorban: data.reduce((acc, cur) => acc + cur.victim, 0),
     };
   }, [JSON.stringify(data)]);
 
@@ -101,9 +97,9 @@ export default function Home() {
       <div className="w-full min-h-[300px] h-auto flex flex-col justify-center">
         <DisasterList
           title={
-            <h1 className="text-black text-base sm:text-2xl font-bold">
+            <h2 className="text-black text-base sm:text-2xl font-bold">
               Laporan Bencana Terkini
-            </h1>
+            </h2>
           }
         />
       </div>
