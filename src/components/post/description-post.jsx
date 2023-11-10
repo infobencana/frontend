@@ -1,6 +1,6 @@
 import { UserAvatar } from "../user/user-avatar";
 import { UserFullname } from "../user/user-fullname";
-import Editor from "../editor";
+import { Editor } from "../editor";
 import dayjs from "dayjs";
 
 export function DescriptionPost({ description, postBy, date }) {

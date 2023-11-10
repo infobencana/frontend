@@ -81,6 +81,7 @@ export function ProfileForm() {
                       key={field.name}
                       {...field}
                       {...form.register(field.name)}
+                      disabled={field.name === "email"}
                     />
                   </FormControl>
                   <FormMessage />

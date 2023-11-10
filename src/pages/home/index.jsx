@@ -1,8 +1,7 @@
-import { lazy } from "react";
+import { useEffect, useMemo, lazy } from "react";
 import { useApi } from "@/hooks/use-api";
 import { getActiveDisaster } from "@/api/disaster";
 import { Spinner } from "@/components/ui/spinner";
-import { useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet";
 import DisasterList from "@/components/disaster/disaster-list";
 

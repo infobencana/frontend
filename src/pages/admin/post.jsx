@@ -24,7 +24,7 @@ import { Donation } from "@/components/admin/post/donation";
 import { TitlePost } from "@/components/admin/post/title-post";
 import { TotalVictim } from "@/components/admin/post/total-victim";
 import { MissingPeople } from "@/components/admin/post/missing-people";
-import Editor from "@/components/editor";
+import { Editor } from "@/components/editor";
 import { cn } from "@/utils/cn";
 
 export default function AdminPost({ onEdit }) {

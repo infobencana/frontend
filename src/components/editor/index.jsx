@@ -16,7 +16,7 @@ const theme = {
   }),
 };
 
-export default function Editor({ config, onChange }) {
+export function Editor({ config, onChange }) {
   const saveBlock = (editor) => {
     const e = {
       target: {
