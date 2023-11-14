@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 export function handleAuth(token, redirectURI) {
   if (token) {
     Cookies.set("token", token, { expires: 3 });
-    setTimeout(() => window.location.replace(redirectURI || ""), 1000);
+    setTimeout(() => window.location.replace(redirectURI || "/"), 1000);
   }
 }
 
